@@ -1,0 +1,262 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>户外定位｜Outdoor Relay</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f3f4ed;color:#172c24;font:16px/1.65 system-ui}main,nav{max-width:1120px;margin:auto;padding:24px}nav{display:flex;gap:20px;flex-wrap:wrap}a{color:inherit}header{background:#16362b;color:white;padding:clamp(24px,6vw,80px);border-radius:32px}h1{font-size:clamp(38px,8vw,88px);line-height:1.03;margin:16px 0}h2{font-size:clamp(26px,4vw,44px);margin:0 0 20px}section{margin:60px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:16px}article,details{background:#fff;border-radius:22px;padding:24px}small{font-size:13px;letter-spacing:.07em}.flow{background:#dce7ca;padding:22px;border-radius:22px;margin:18px 0}summary{cursor:pointer;font-weight:700}details{margin:10px 0}img{width:100%;height:220px;object-fit:contain;mix-blend-mode:multiply}p{margin:.65em 0}footer{padding:24px 0}
+</style><style>
+body{background:#f0f0ee;color:#121417}main,nav{max-width:1380px}nav{border-bottom:1px solid #c7c9ce;align-items:center}header{position:relative;isolation:isolate;overflow:hidden;min-height:580px;border-radius:0;background:#fafaf9;color:#111;padding:55px 5%;display:grid;align-content:center}header>*{position:relative;z-index:2;max-width:48%}header h1{font-size:clamp(37px,5.7vw,85px);letter-spacing:-.065em}header small{color:#2146d9;font-weight:700}header img.hero-art{position:absolute;right:0;top:4%;width:62%;height:92%;max-width:none;z-index:1;object-fit:contain;mix-blend-mode:normal}header .annotation{position:absolute;right:4%;top:9%;max-width:none;font:13px monospace;border-bottom:1px solid #2447dc;color:#2447dc}section{border-top:1px solid #bdc2cf;padding-top:24px}article,details,.flow{border-radius:0;border:1px solid #d4d8e1}#simulation>div:first-of-type{border-radius:0!important;background:#070a12!important}#simulation svg{background:#080b15}#simulation button{background:#2447dc;color:white;border:0;padding:11px 16px;cursor:pointer;font:inherit}#simulation button+button{background:#202735}.flow{background:#e8edff}.grid article b{color:#2447dc}#simulation .grid article p{font-weight:700;font-size:20px}@media(max-width:650px){header{min-height:570px;align-content:start;padding:35px 20px}header>*{max-width:100%}header img.hero-art{width:100%;top:auto;bottom:0;height:48%}header .annotation{display:none}}
+</style><style>
+body{background:#e8ebf1}header{background:#f7f8fa;min-height:510px}h1{color:#101e37}.photo{display:block;background-repeat:no-repeat;background-color:white;aspect-ratio:1.24}.relay{background-image:url(reference-0.png);background-size:571% auto;background-position:38% 44%}.gateway{background-image:url(reference-1.png);background-size:365% auto;background-position:58% 43%}.wearable{background-image:url(wearable-cutout.png);background-size:contain;background-position:center}header figure.hero-art{margin:0;position:absolute;right:4%;top:16%;width:43%;max-width:none;z-index:1}.hardware-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:24px}.hardware-flow>div{background:#17243c;padding:12px;min-width:0}.hardware-flow b,.hardware-flow small{display:block;margin:7px 0}.signal-track{margin:0 8%;position:relative;height:2px;background:#6584ff}.signal-track i{position:absolute;width:12px;height:12px;border-radius:50%;background:white;box-shadow:0 0 18px 7px #657dff;top:-5px;opacity:0;pointer-events:none;z-index:5}.grid article,.flow,details{background:#f9faff}.flow{border-left:4px solid #2447dc}@media(max-width:650px){.hardware-flow{grid-template-columns:repeat(2,1fr)}header figure.hero-art{top:auto;bottom:5%;right:15%;width:70%}}
+</style><style>
+body{background:#f5f5f3;color:#121721}main,nav{max-width:1520px}nav{background:#f5f5f3;gap:clamp(12px,3vw,42px);font-size:13px}nav b{margin-right:auto}header{background:#e8ebf2;min-height:clamp(540px,51vw,742px);padding-inline:6%}header h1{font-weight:760;letter-spacing:-.075em;font-size:clamp(39px,6.7vw,102px)}header p{max-width:43%;color:#374155}header figure.hero-art{top:19%;right:4%;width:47%;mix-blend-mode:multiply}header .annotation{top:12%;right:6%}.cta{display:inline-block;background:#2146d9;color:white;padding:10px 20px;margin-top:22px;text-decoration:none}section{margin:clamp(56px,8vw,112px) 0;border-color:#cdd0d8}h2{font-size:clamp(32px,4.6vw,66px);letter-spacing:-.06em}h3{line-height:1.25}.hardware-flow{padding:24px;gap:12px}.hardware-flow>div{background:#eef1f8;color:#141d32;padding:16px}.hardware-flow .photo{mix-blend-mode:multiply}.relay{background-size:575% auto;background-position:38% 44%;clip-path:polygon(9% 64%,25% 54%,64% 44%,72% 37%,76% 4%,84% 0,85% 17%,81% 48%,78% 80%,65% 91%,28% 97%,11% 83%)}.gateway,.wearable{background-color:transparent;mix-blend-mode:multiply}#budget{background:#173cc2;color:white;padding:clamp(22px,5vw,68px)}#budget article{color:#141d32}#budget h3{font-size:clamp(29px,4vw,55px);margin:0 0 22px}.flow{border:none;padding:24px;background:#e8edff}article,details{border-color:#e0e2e9}#why details{padding:24px 28px}@media(max-width:650px){header p{max-width:100%}header figure.hero-art{top:auto;bottom:3%;width:75%;right:12%}.hardware-flow{padding:14px}}
+</style><style>
+body{background:#111;color:#151515}nav{background:#e9ebec;color:#101010;margin:16px auto 0;padding:14px 28px}main{padding-top:0}header{background:linear-gradient(145deg,#f7f8f8,#d1d6db);min-height:clamp(550px,62vw,840px);border-radius:0}header h1{color:#111;font-weight:520;letter-spacing:-.085em}header small,.annotation{background:#e7ff00!important;color:#101010!important;padding:4px 8px}.cta{background:#131313}.relay{clip-path:none;background-size:393% auto;background-position:38.2% 39%;aspect-ratio:1.05}header figure.hero-art{width:48%;top:17%;right:3%;mix-blend-mode:normal}.gateway{clip-path:none}.hardware-flow>div{background:#e8eaeb;color:#111}.hardware-flow .photo{mix-blend-mode:normal}section{margin:14px 0 0;background:#eef0f1;padding:clamp(24px,4vw,64px);border:0}h2{font-weight:520;letter-spacing:-.075em}#budget{background:#dce0e4;color:#111}#budget h3{background:#e7ff00;width:fit-content;padding:4px 9px}.grid article,.flow,details{background:#f6f7f7}.flow{border-left:4px solid #e7ff00}.grid article b{color:#151515}#simulation>div:first-of-type{background:#151719!important}#simulation button{background:#e7ff00;color:#111}#simulation button+button{background:#393b3d;color:white}.signal-track{background:#e7ff00}.signal-track i{box-shadow:0 0 18px 7px #d3eb00}footer{color:#fff}@media(max-width:650px){header figure.hero-art{top:auto;bottom:3%;right:18%;width:64%}header{min-height:660px}}
+</style><style>.relay{background:transparent url(relay-cutout.png) center/contain no-repeat;clip-path:none}header figure.hero-art{filter:drop-shadow(0 12px 18px #19202c28)}.hardware-flow>div.active{outline:2px solid #e7ff00}</style><style>.gateway{background:transparent url(gateway-cutout.png) center/contain no-repeat}.hardware-flow .photo{min-height:110px}</style><style>
+header{background:linear-gradient(150deg,#f5f6f7 10%,#d5dbe1 85%);padding:clamp(28px,5vw,74px);align-content:start;min-height:clamp(640px,58vw,850px)}
+header h1{margin-top:clamp(26px,5vw,75px);max-width:53%}
+header figure.hero-art{top:10%;right:0;width:58%;height:70%;background-size:contain}
+header .annotation{top:5%;right:5%}
+.hero-spec{position:absolute;bottom:7%;left:42%;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:14px;border-left:1px solid #68727e;font:13px/1.5 monospace;color:#202833}
+.hero-spec dd{margin:0}.detail-lenses{display:flex;gap:12px;position:absolute;bottom:6%;left:5%;max-width:none}.detail-lenses span{display:block;width:clamp(76px,10vw,144px);aspect-ratio:1;border-radius:50%;background:#d7dce2 url(relay-cutout.png) no-repeat;background-size:295%;background-position:52% 78%;border:1px solid #b7bfc7}.detail-lenses span+span{background-position:62% 100%;background-size:410%}
+@media(max-width:650px){header{min-height:780px}header h1{max-width:100%}header figure.hero-art{width:94%;right:3%;top:41%;height:42%}header .annotation{display:none}.hero-spec{left:auto;right:5%;bottom:2%;font-size:11px;gap:4px 8px}.detail-lenses{left:5%;bottom:4%;gap:6px}.detail-lenses span{width:56px}.hardware-flow>div{padding:10px}.hardware-flow b{font-size:14px}}
+</style><nav id="zhNav"><a href="#overview">01 概览 / Overview</a><a href="#technology">02 技术 / Technology</a><a href="#deployment-art">03 部署 / Deployment</a><a href="#regulation">04 法规 / Regulation</a><a href="#final-display">05 展示 / Final display</a></nav><main id="zhPage"><div class="proposal-cover" id="overview">
+<picture><source media="(max-width: 600px)" srcset="searching-p-cover.png"><img src="searching-p-cover.png" width="1536" height="1024" alt="Searching P 从背包到挂件 / From backpack to wearable. 2019 年原方案使用太阳能背包，有蜂窝覆盖时使用 NB-IoT，离网时使用 LoRa。后续最初构想是为人和宠物设计同时支持 LoRa 与蜂窝的小型挂件，目标续航约一周。"></picture>
+<a href="#technology" class="cover-next">查看技术架构 <span lang="en">Explore technology</span> ↓</a>
+</div>
+<style>
+.proposal-cover{position:relative;margin:0 auto 16px;background:#a7b8dc;overflow:hidden;border-radius:22px}.proposal-cover img{width:100%;height:auto;display:block;mix-blend-mode:normal}.cover-next{display:block;text-align:center;text-decoration:none;padding:11px 20px;background:#192d6c;color:#fff;font-weight:600}.cover-next span{margin-inline:8px;font-weight:400}.cover-next:focus-visible{outline:3px solid #e7ff00;outline-offset:-4px}
+</style>
+<section class="retro" id="technology" aria-label="技术架构 / Technology"><div class="retro-frame"><img src="technology-page.png" alt="Technology — 佩戴端、LoRa 跳传、联网与实测"><div class="editable sub" style="left:1.9749835418038184%;top:9.266409266409267%;width:88.87425938117183%;height:4.343629343629344%"><span>Technical Portfolio of <a href="#termInfo" data-term="Mesh">Mesh</a> Tracking and Edge-to-Cloud Connectivity</span></div><div class="editable bar" style="left:2.50164581961817%;top:16.6988416988417%;width:27.649769585253456%;height:2.6061776061776065%"><span>佩戴端 / WEARA<a href="#termInfo" data-term="BLE">BLE</a></span></div><div class="editable bar" style="left:36.273864384463465%;top:16.6988416988417%;width:28.966425279789338%;height:2.6061776061776065%"><span><a href="#termInfo" data-term="LoRa">LoRa</a> 跳传 / <a href="#termInfo" data-term="LoRa">LoRa</a> relays</span></div><div class="editable red" style="left:71.49440421329822%;top:17.760617760617762%;width:26.00394996708361%;height:4.826254826254827%"><span>联网与实测 / Uplink &amp; testing</span></div><div class="editable yellow" style="left:4.3449637919684%;top:26.06177606177606%;width:28.04476629361422%;height:4.054054054054054%"><span><a href="#termInfo" data-term="RAK4631">RAK4631</a> 参考方案 / Reference module</span></div><div class="editable light" style="left:21.461487820934828%;top:34.55598455598456%;width:10.796576695194208%;height:6.563706563706564%"><span><a href="#termInfo" data-term="nRF52840">nRF52840</a> + <a href="#termInfo" data-term="SX1262">SX1262</a></span></div><div class="editable light" style="left:21.461487820934828%;top:42.664092664092664%;width:10.796576695194208%;height:5.405405405405405%"><span><a href="#termInfo" data-term="GNSS">GNSS</a> · <a href="#termInfo" data-term="BLE">BLE</a> · <a href="#termInfo" data-term="IMU">IMU</a></span></div><div class="editable yellow" style="left:20.737327188940093%;top:52.70270270270271%;width:11.718235681369322%;height:8.011583011583012%" data-compact><span>软件控制 <a href="#termInfo" data-term="Mesh">Mesh</a> / Software-controlled <a href="#termInfo" data-term="Mesh">Mesh</a></span></div><div class="editable light" style="left:20.737327188940093%;top:61.77606177606178%;width:11.784068466096116%;height:8.204633204633206%" data-compact><span>无内置蜂窝 / No cellular modem</span></div><div class="editable yellow" style="left:38.11718235681369%;top:26.544401544401545%;width:7.702435813034891%;height:4.72972972972973%" data-center><span>定位 / Fix</span></div><div class="editable yellow" style="left:48.18959842001317%;top:26.544401544401545%;width:9.67741935483871%;height:4.72972972972973%" data-center><span>中继 / <a href="#termInfo" data-term="Relay">Relay</a></span></div><div class="editable yellow" style="left:58.7228439763002%;top:26.544401544401545%;width:9.34825543120474%;height:4.72972972972973%" data-center><span>网关 / <a href="#termInfo" data-term="Gateway">Gateway</a></span></div><div class="editable yellow" style="left:38.44634628044766%;top:55.88803088803089%;width:29.493087557603687%;height:6.177606177606178%"><span><a href="#termInfo" data-term="GNSS">GNSS</a> 定位，<a href="#termInfo" data-term="LoRa">LoRa</a> 传输 / <a href="#termInfo" data-term="GNSS">GNSS</a> fixes; <a href="#termInfo" data-term="LoRa">LoRa</a> forwards</span></div><div class="editable yellow" style="left:81.23765635286372%;top:46.04247104247104%;width:15.53653719552337%;height:4.1505791505791505%"><span><a href="#termInfo" data-term="WiFi">WiFi</a> / <a href="#termInfo" data-term="Ethernet">Ethernet</a> → <a href="#termInfo" data-term="MQTT">MQTT</a></span></div><div class="editable yellow" style="left:81.10599078341014%;top:52.60617760617761%;width:16.063199473337722%;height:6.177606177606178%" data-compact><span>外接 <a href="#termInfo" data-term="4G Modem">4G Modem</a> / External cellular modem</span></div><div class="editable yellow" style="left:81.10599078341014%;top:59.55598455598456%;width:16.19486504279131%;height:5.7915057915057915%"><span>蓝牙接力 / <a href="#termInfo" data-term="BLE">BLE</a> to a 4G phone</span></div><div class="editable yellow" style="left:72.67939433838052%;top:72.2972972972973%;width:24.16063199473338%;height:6.274131274131275%" data-compact><span>功耗 · 续航 · 跳传 · 最后位置 / Power · Runtime · Hops · <a href="#termInfo" data-term="Last fix">Last fix</a></span></div><div class="editable cyan" style="left:78.60434496379197%;top:82.81853281853282%;width:18.63067807768269%;height:9.16988416988417%" data-compact><span>获相关部门同意后现场测试 / Field placement subject to departmental agreement</span></div><div class="editable yellow" style="left:2.369980250164582%;top:79.72972972972974%;width:24.02896642527979%;height:4.054054054054054%"><span>佩戴端要点 / Wearable summary</span></div><div class="editable yellow" style="left:36.21%;top:79.73%;width:26.2%;height:4.15%"><span><a href="#termInfo" data-term="LoRa">LoRa</a> 跳传要点 / <a href="#termInfo" data-term="LoRa">LoRa</a> relay summary</span></div><div class="editable red" style="left:2.633311389071758%;top:83.88030888030889%;width:31.468071099407506%;height:10.617760617760618%"><span>参考 <a href="#termInfo" data-term="RAK4631">RAK4631</a>，结合独立定位与运动检测。软件控制 <a href="#termInfo" data-term="Mesh">Mesh</a>。 / Reference <a href="#termInfo" data-term="RAK4631">RAK4631</a> with separate positioning and motion sensing. Software controls the mesh.</span></div><div class="editable red" style="left:36.40552995391705%;top:83.88030888030889%;width:32.25806451612903%;height:10.617760617760618%"><span><a href="#termInfo" data-term="LoRa">LoRa</a> 逐跳转发坐标，网关联网后上传。 / <a href="#termInfo" data-term="LoRa">LoRa</a> forwards coordinates hop by hop. A connected gateway uploads them.</span></div>
+<button class="hot invisible-hot" style="--x:3%;--y:24%;--w:30%;--h:48%" onclick="document.querySelector('#chipDetails').showModal()" aria-label="芯片与佩戴端 / Chip details"></button>
+<a class="hot invisible-hot" style="--x:37%;--y:25%;--w:31%;--h:47%" href="#deployment-art" aria-label="部署演示 / Deployment"></a>
+<a class="hot invisible-hot" style="--x:72%;--y:23%;--w:25%;--h:22%" href="gateway-cutout.png" aria-label="网关大图 / Gateway image"></a></div></section>
+<dialog id="chipDetails"><form method="dialog"><button aria-label="关闭 / Close">×</button></form><h2>芯片与佩戴端 / Chip details</h2><p><b>RAK4631</b> 是参考模组，包含 Nordic nRF52840 与 Semtech SX1262。前者负责计算和 BLE，后者负责 LoRa 无线收发。GNSS 与 IMU 需由所选设备提供。佩戴端无内置蜂窝模块。</p><p>RAK4631 is a reference module. The nRF52840 handles processing and BLE, while the SX1262 handles LoRa. GNSS and motion sensing depend on the selected wearable. The wearable has no cellular modem.</p><h4>候选测试板 / Candidate test hardware</h4><ul><li><a href="https://docs.rakwireless.com/product-categories/wisblock/rak4631/datasheet/" target="_blank" rel="noopener">RAK4631 模组图、引脚和方框图 / Module and block diagram ↗</a></li><li><a href="https://wiki.seeedstudio.com/get_started_with_lorawan_tracker/" target="_blank" rel="noopener">Seeed T1000-E 硬件图 / Hardware diagram ↗</a></li></ul><p>计划测试定位、LoRa 跳传和待机功耗。 / Planned tests: positioning, LoRa hops and idle power.</p></dialog>
+<section class="retro" id="deployment-art" aria-label="从山谷到地图 / From valley to map">
+<div class="retro-frame" id="deploymentFrame"><img src="deployment-page.png" alt="部署示意图：挂件、山脊中继 A、补盲中继 B、联网出口和地图">
+<svg class="live-route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M16 65 Q23 54 34 53"/><path pathLength="100" d="M34 53 Q43 42 52 44"/><path pathLength="100" d="M52 44 Q61 46 67 58"/><path pathLength="100" d="M67 58 L88 58"/></svg><i id="retroPacket" aria-hidden="true"></i><div id="arrivalBubble" class="visible" style="left:16%;top:63%" aria-hidden="true"><strong>等待定位</strong><span lang="en">Ready to locate</span></div>
+<a class="hot" style="--x:26%;--y:37%;--w:13%;--h:40%" href="relay-cutout.png" target="_blank" aria-label="查看中继设备图 / Open relay image"></a>
+<a class="hot" style="--x:61%;--y:37%;--w:18%;--h:39%" href="gateway-cutout.png" target="_blank" aria-label="查看网关设备图 / Open gateway image"></a>
+<div class="retro-timeline" aria-label="演示步骤 / Demo stages"><button data-step="0">定位 / Fix</button><button data-step="1">跳传 / Relay</button><button data-step="3">上传 / Uplink</button><button data-step="4">更新 / Update</button></div></div>
+<div class="retro-links"><button id="retroPlay">播放全链路 / Play route</button><a href="#field">选址说明 / Site layout</a><a href="#budget">预算 / Budget</a></div>
+<p id="retroStatus" aria-live="polite">选择步骤或播放全链路 / Choose a stage or play the full route.</p>
+<details class="route-limits"><summary>跳数和站距限制 / Hop &amp; range limits</summary><p>Meshtastic 常规转发默认建议 3 跳，上限 7。报文耗尽转发额度后，接收节点不会继续常规转发。2019 提案中的约 7 公里来自开阔环境示例，站距须以现场地形、天线和双向收包实测决定。</p><p>Meshtastic recommends a default of 3 hops, with a maximum of 7 for ordinary forwarding. A receiver stops ordinary forwarding once the packet exhausts its hop budget. The 2019 proposal cited about 7 km in open terrain. Set actual spacing using field tests of terrain, antennas and reception in both directions.</p><p><a href="https://meshtastic.org/docs/configuration/tips/#hop-count">Meshtastic 配置建议 / Configuration guidance</a></p></details><p class="retro-note">B 站按覆盖实测决定。图中点位为示意，获相关部门同意后方可放置测试。 / Relay B is optional. Sites are illustrative and field placement requires departmental agreement.</p></section>
+<style>
+.retro{padding:0;background:#3558b9;overflow:hidden;color:white;border-radius:12px}.retro-frame{position:relative}.retro-frame>img{display:block;width:100%;height:auto;mix-blend-mode:normal}.hot{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);background:#dfe3ec;color:#101441;border:0;text-align:center;display:grid;place-items:center;font:600 clamp(8px,1vw,15px) system-ui;text-decoration:none;cursor:pointer}.hot:empty{background:transparent}.hot:hover,.hot:focus-visible{outline:3px solid #ffe83b}.retro-timeline{position:absolute;left:9.8%;right:9.7%;top:87.4%;height:7.5%;display:grid;grid-template-columns:repeat(4,1fr);gap:2.1%}.retro button,.retro-links a{cursor:pointer}.retro-timeline button,.retro-links button,.retro-links a{border:2px outset #edf0fb;background:linear-gradient(#f4f6fd,#aab5cc);color:#101429;font:700 clamp(9px,1.5vw,20px) system-ui;text-decoration:none}.retro-timeline button[aria-pressed=true]{background:#ffe52a}.retro-links{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px}.retro-links>*{padding:6px 12px}.retro p{margin:0;padding:6px 16px}.retro-note{font-size:13px;padding-bottom:14px!important}#retroPacket{position:absolute;z-index:3;width:clamp(7px,1.4vw,19px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:white;box-shadow:0 0 6px 3px #ffe52a,0 0 20px 8px #ffdc00;pointer-events:none;left:16%;top:64%}dialog{max-width:620px;background:#eef2fc;color:#111c43;border:4px ridge #d2ddff;border-radius:10px;padding:24px}dialog::backdrop{background:#08163390;backdrop-filter:blur(5px)}dialog form{float:right}
+</style>
+<script>
+const routePoints=[[16,64],[36,54],[52,44],[67,55],[88,61]];
+const arrivals=[['定位成功','Location acquired'],['A 站已接收','Received by relay A'],['B 站已接收','Received by relay B'],['正在上传位置','Uploading location'],['位置已更新','Location updated']];
+const arrivalBubble=document.querySelector('#arrivalBubble');
+let arrivalTimer, fadeTimer, lastArrival=-1;
+function announceArrival(index){
+ if(index===lastArrival)return;
+ lastArrival=index;
+ clearTimeout(arrivalTimer);clearTimeout(fadeTimer);
+ const [zh,en]=arrivals[index];
+ const [x,y]=routePoints[index];
+ arrivalBubble.style.left=Math.max(14,Math.min(86,x))+'%';
+ arrivalBubble.style.top=(y-2)+'%';
+ arrivalBubble.querySelector('strong').textContent=zh;
+ arrivalBubble.querySelector('span').textContent=en;
+ document.querySelector('#retroStatus').textContent=zh+' / '+en;
+ fadeTimer=setTimeout(()=>arrivalBubble.classList.add('visible'),100);
+ arrivalTimer=setTimeout(()=>arrivalBubble.classList.remove('visible'),1190);
+}
+const routeButtons=[...document.querySelectorAll('.retro-timeline button')];
+const retroPacket=document.querySelector('#retroPacket');
+let retroFrame;
+function renderRoute(position){
+ const index=Math.min(3,Math.floor(position)), fraction=position-index;
+ const segments=[...document.querySelectorAll('.live-route path')];
+ segments.forEach((segment,i)=>segment.style.strokeDashoffset=100*(1-Math.max(0,Math.min(1,position-i))));
+ const path=segments[index], point=path.getPointAtLength(path.getTotalLength()*fraction);
+ retroPacket.style.left=point.x+'%';retroPacket.style.top=point.y+'%';retroPacket.style.opacity=position>0?1:0;
+ const step=Math.floor(position);
+
+ routeButtons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.step)===(step===2?1:step))));
+}
+routeButtons.forEach(button=>button.addEventListener('click',()=>{cancelAnimationFrame(retroFrame);playTo(Number(button.dataset.step));}));
+function playTo(target){lastArrival=-1;clearTimeout(arrivalTimer);clearTimeout(fadeTimer);arrivalBubble.classList.remove("visible");
+ cancelAnimationFrame(retroFrame);
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){renderRoute(target);announceArrival(target);return;}
+ const start=performance.now();
+  function tick(now){
+   const travel=1050, dwell=1550, cycle=travel+dwell;
+   const elapsed=now-start;
+   const hop=Math.min(4,Math.floor(elapsed/cycle));
+   const fraction=Math.min(1,(elapsed-hop*cycle)/travel);
+   const position=Math.min(target,hop+fraction);renderRoute(position);announceArrival(Math.floor(position));
+   if(elapsed<target*cycle)retroFrame=requestAnimationFrame(tick);
+ }
+ renderRoute(0);retroFrame=requestAnimationFrame(tick);
+}
+document.querySelector('#retroPlay').addEventListener('click',()=>playTo(4));
+renderRoute(0);
+</script><section class="retro" id="regulation" aria-label="法规与市场 / Regulation and Market"><div class="reg-frame"><img src="regulation-market-clean.png" alt=""><div class="reg-labels"><article style="--x:5.1%;--y:15.1%;--w:31%;--h:25%"><h3>香港试点<span lang="en">HONG KONG PILOT</span></h3><mark>920–925 MHz</mark><p>按香港要求选型与测试。<br><span lang="en">Test under Hong Kong rules.</span></p><a href="https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1078.pdf" target="_blank" rel="noopener">香港技术规格 / OFCA ↗</a></article><article style="--x:5.1%;--y:59.7%;--w:31%;--h:27%"><h3>大陆监管<span lang="en">MAINLAND CHINA</span></h3><mark>频率 · 台站 · 型号核准</mark><p>按用途核对频率许可、台站执照及设备型号核准。<br><span lang="en">Check licensing and type approval.</span></p><a href="https://www.gov.cn/zhengce/zhengceku/2016-11/25/content_5137687.htm" target="_blank" rel="noopener">无线电管理条例 / Regulation ↗</a></article><article style="--x:45.5%;--y:21.1%;--w:20.1%;--h:18.4%"><h3>微功率目录<span lang="en">SRD CATALOGUE</span></h3><mark>工信部 2019 年第 52 号</mark><p>用途与参数须符合目录。<br><span lang="en">Use and limits must match.</span></p><a href="https://www.miit.gov.cn/zwgk/zcwj/wjfb/gg/art/2020/art_4f2c890530cc4837b2113cf977e249c4.html" target="_blank" rel="noopener">第 52 号公告 / Notice ↗</a></article><article style="--x:45.5%;--y:60%;--w:20.1%;--h:18.5%"><h3>920–925 MHz<span lang="en">RFID</span></h3><mark>工信部无〔2024〕76 号</mark><p>该规定适用于 RFID 设备。<br><span lang="en">RFID equipment only.</span></p><a href="https://www.miit.gov.cn/jgsj/wgj/wjfb/art/2024/art_adf8d26478904be0829825f738918aa3.html" target="_blank" rel="noopener">RFID 规定 / Rules ↗</a></article><article style="--x:71.5%;--y:8.8%;--w:23%;--h:14.7%"><h3>跨境测试<span lang="en">CROSS-BORDER TESTING</span></h3><p>入境前核对申报及临时进关批准要求。<br><span lang="en">Check declaration and entry approval.</span></p><a href="https://www.gov.cn/zhengce/zhengceku/2016-11/25/content_5137687.htm" target="_blank" rel="noopener">第 47 条 / Article 47 ↗</a></article><article style="--x:71.5%;--y:36.5%;--w:23%;--h:17.5%"><h3>市场路径<span lang="en">MARKET FOCUS</span></h3><p>香港优先 · 欧洲与美国待评估。<br><span lang="en">Hong Kong first. EU and US subject to review.</span></p></article><article style="--x:83%;--y:64.5%;--w:13.3%;--h:23%"><h3>精致外观<span lang="en">DESIGN FOCUS</span></h3><p>面向重视设计、消费力较高的 Z 世代。<br><span lang="en">For design-conscious, affluent Gen Z consumers.</span></p></article></div></div><details class="route-limits"><summary>法规原文与适用范围 / Sources and scope</summary><p>香港试点设备赴大陆使用、销售或入境前须单独核对要求。大陆 920–925 MHz RFID 规定不提供户外 Mesh 定位组网许可。</p><p lang="en">Mainland use, sale or import requires a separate assessment. The 920–925 MHz RFID rules do not authorize outdoor Mesh tracking networks.</p><p><a href="https://wap.miit.gov.cn/jgsj/wgj/flfg/art/2021/art_9c4fdc7c75e84f43aa08cd6902b248e4.html" target="_blank" rel="noopener">治安管理处罚法第 32 条 / Article 32 ↗</a></p></details></section>
+<style>.reg-frame{position:relative;container-type:inline-size}.reg-frame>img{display:block;width:100%;height:auto;mix-blend-mode:normal}.reg-labels article{position:absolute;left:var(--x);top:var(--y);width:var(--w);min-height:var(--h);background:linear-gradient(135deg,#123976,#164fa1);color:white;border:0;padding:.42cqw .58cqw;box-sizing:border-box;border-radius:0}.reg-labels h3{margin:0 0 .3em;font:800 1.85cqw/1.08 "Segoe UI","Microsoft YaHei",sans-serif}.reg-labels h3 span{display:block;font-size:.79em}.reg-labels p{margin:.3em 0;padding:0;font:550 1.14cqw/1.22 "Segoe UI","Microsoft YaHei",sans-serif}.reg-labels mark{display:inline-block;background:#ffeb30;color:#101025;padding:.12em .35em;font:800 1.2cqw/1.2 system-ui}.reg-labels a{font-size:1cqw;color:white;text-underline-offset:.18em}@media(max-width:640px){.reg-frame>img{display:none}.reg-labels{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}.reg-labels article{position:static;width:auto;min-height:0;padding:10px;border:2px outset #cbd6ef}.reg-labels h3{font-size:16px}.reg-labels p,.reg-labels mark,.reg-labels a{font-size:12px}}</style><section id="final-display"><div class="final-board"><img src="final-display-clean.png" alt="山地试点概念图：挂件、中继、网关和地图"><img class="final-original-title" src="final-display-title.png" alt="Final Display / 最终展示"><span class="fl fw" style="--x:8%;--y:25.35%;--w:37%">试点验证 / Pilot validation</span><span class="fl " style="--x:8%;--y:30.65%;--w:37%">功耗 · 续航 · 跳传 · 最后位置<br><span lang="en">Power · Runtime · Hops · Last location</span></span><span class="fl " style="--x:26.3%;--y:52.05%;--w:9.7%" data-device-label>中继 / Relay</span><span class="fl " style="--x:53.4%;--y:52.35%;--w:12%" data-device-label>网关 / Gateway</span><span class="fl " style="--x:54.5%;--y:71.1%;--w:10.8%">地图 / Map</span><span class="fl " style="--x:11.5%;--y:74.35%;--w:15.6%">挂件 / Wearable</span><img class="final-original-window" src="final-display-title.png" alt=""><button type="button" class="final-chip" onclick="document.querySelector('#chipDetails').showModal()"><img src="wearable-cutout.png" alt=""><span>芯片与测试板 <small lang="en">Chips &amp; test boards ↗</small></span></button><a class="fl fw" style="--x:4.7%;--y:92.4%;--w:38%;text-align:left" href="#deployment-art">查看部署演示 / View deployment ↗</a></div><style>.final-board{position:relative;container-type:inline-size;color:#102066}.final-board>img{display:block;width:100%;height:auto;mix-blend-mode:normal}.final-board .fl{position:absolute;left:var(--x);top:var(--y);width:var(--w);font:750 1.85cqw/1.15 system-ui;margin:0;text-align:center}.final-board .ft{font-size:6cqw;text-align:left;font-style:italic;color:white;text-shadow:0 .08em #e33134,0 .12em #982531}.final-board .fw{color:white}.final-board a:focus-visible{outline:2px solid white}#final-display{padding:0;overflow:hidden}#final-display>details{margin:14px}</style><details id="inside"><summary>挂件内部 / Inside the wearable</summary><div class="grid"><article><img alt="Seeed SenseCAP T1000-E 参考产品" src="wearable-cutout.png"><p><a href="https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html">Seeed T1000-E｜测试参考机</a></p></article><article><h3>定位与通信</h3><p><b>GNSS</b> 取得卫星坐标。</p><p><b>LoRa Mesh</b> 传送位置与求助报文。</p><p><b>蓝牙</b> 在近距离与手机连接。</p></article><article><h3>感应与供电</h3><p><b>惯性传感器</b> 检测活动，由程序控制定位与无线电唤醒。</p><p><b>充电电池</b> 供电；静止后测试休眠与最后位置保存。</p><p><b>按键</b> 用于人员主动发出求助信号。</p></article><article><h3>候选测试 / Bench tests</h3><p>对比定位启动、待机功耗和跳传表现。</p><p lang="en">Compare acquisition time, idle power and relay performance.</p><button type="button" onclick="document.querySelector('#chipDetails').showModal()">查看硬件图 / Hardware diagrams ↗</button></article></div></details>
+<details id="field"><summary>山上选址 / Site layout</summary><div class="fold-assets"><figure><img src="relay-cutout.png" alt="山脊中继 / Ridge relay"><figcaption>山脊中继 / Ridge relay</figcaption></figure><figure><img src="gateway-cutout.png" alt="联网出口 / Gateway"><figcaption>联网出口 / Gateway</figcaption></figure></div><div class="flow"><b>佩戴端</b> → LoRa → <b>覆盖中继</b> → LoRa → <b>联网出口</b> → MQTT → <b>地图／联络端</b></div><div class="grid"><article><h3>山脊或覆盖缺口</h3><p>在勘测有转发价值的点布置 <a href="https://store.rakwireless.com/products/wismesh-repeater-mini-v2">WisMesh Repeater Mini V2</a>，接收并转发 LoRa 报文。中继有独立太阳能供电。</p></article><article><h3>已有网络的地点</h3><p>布置 WisMesh <a href="https://store.rakwireless.com/products/wismesh-wifi-gateway">WiFi</a> 或 <a href="https://store.rakwireless.com/products/wismesh-ethernet-gateway">Ethernet MQTT 网关</a>。以太网版可接外置 4G Modem，在有 4G 的地点上联。</p></article><article><h3>附近手机接力</h3><p>附近可接收该节点蓝牙讯息且已有 4G 的手机，可作为备选出口。出口暂不可用时，界面应明确显示最后一次收到的位置和时间。</p></article></div><p>野外点位为示意。实地放置前须与相关部门协商并获同意，按覆盖实测和供电条件选点。</p></details>
+<details id="why"><summary>方案取舍 / Design decisions</summary><details open><summary>2019 Searching P / TrackPack → 小型挂件</summary><p>旧方案把太阳能板、NB-IoT 与 LoRa 放在背包上。背包有空间承载硬件，但难以让宠物和人共用同一佩戴形态。新版把太阳能供电留给固定中继，把互联网出口放到网关或手机，挂件专注定位与传讯。</p></details><details><summary>为什么不把蜂窝模块装进挂件？</summary><p>蜂窝上报依赖运营商覆盖，安装模块、电源与天线也会占据挂件空间。将蜂窝放在出口可降低每个佩戴端的负担，但效果仍取决于 LoRa 跳传路径与出口可用性。</p></details><details><summary>为什么先买现成设备实测？</summary><p>用现成设备测接收与发射电流、冷热启动、跳传、不同运动状态下的续航和最后位置误差。人员步行、奔跑及宠物持续活动分别测试，用数据确定上报间隔和后续体积。</p></details></details><details id="budget"><summary>试点预算 / Pilot budget</summary><div class="grid site-cost"><article><h3>LoRa 中继 / LoRa relay</h3><p>US$89.90–99.90 / 台</p><p>两台 US$179.80–199.80</p><a href="https://store.rakwireless.com/collections/meshtastic">RAKwireless 原厂标价 ↗</a></article><article><h3>企业 NB-IoT 站点 / Enterprise NB-IoT site</h3><p>香港单站报价待询</p></article><article><h3>香港偏远地区 5G 工程 / Rural 5G works</h3><p>每站资助上限 HK$200 万，复杂工程 HK$400 万。</p><a href="https://www.ofca.gov.hk/en/industry_focus/infrastructures/rural_5g/faq/index.html">通讯办资助计划 ↗</a></article></div><div class="fold-assets"><figure><img src="wearable-cutout.png" alt="佩戴参考机 / Wearable"><figcaption>佩戴参考机 / Wearable</figcaption></figure><figure><img src="relay-cutout.png" alt="太阳能中继 / Solar relay"><figcaption>太阳能中继 / Solar relay</figcaption></figure><figure><img src="gateway-cutout.png" alt="MQTT 网关 / Gateway"><figcaption>MQTT 网关 / Gateway</figcaption></figure></div><div class="grid"><article><b>佩戴参考机 × 1</b><p>HK$300–500</p></article><article><b>太阳能中继 × 2</b><p>HK$1,200–2,400 合计</p></article><article><b>网关 × 1</b><p>HK$400–900</p></article><article><b>站点安装预留 × 2</b><p>HK$600–1,600 合计</p></article></div><p><b>合计 HK$2,500–5,400</b>。为整套演示预留的预算区间，采购价以供应商报价为准。另计运费、施工与巡检、可选 4G 路由器及流量。</p><p>采用现成中继原装外壳。安装点须验证太阳能采光、天线净空和维护条件。</p></details></section><footer></footer>
+<dialog id="termInfo"><form method="dialog"><button aria-label="关闭 / Close">×</button></form><h3></h3><p></p><p lang="en"></p><a target="_blank" rel="noopener">原厂资料 / Source ↗</a></dialog>
+<style>#technology .retro-frame{container-type:inline-size}#technology .editable{position:absolute;z-index:5;display:flex;align-content:center;flex-wrap:wrap;align-items:center;gap:0 .22em;padding:.25em .45em;color:#101027;font:700 1.43cqw/1.15 system-ui;overflow:auto}#technology .editable a{color:inherit;text-decoration:underline dotted;text-underline-offset:.15em}#technology .editable a:focus-visible{outline:2px solid #1739dd}.editable.yellow{background:linear-gradient(#fff96a,#ffeb00);border-radius:.25em}.editable.light{background:#ebeef2;border-radius:.25em}.editable.cyan{background:#7de4f2}.editable.red{background:linear-gradient(#e83934,#f89688);color:white!important}.editable.bar{background:#09097a;color:white!important}.editable.title{background:#5487ee;color:#fff!important;font-size:4cqw!important;font-style:italic;text-shadow:0 .18em #db2029}.editable.sub{background:#7ea3ef;font:700 2.2cqw Georgia!important}#technology .invisible-hot{z-index:4}</style>
+<script>const techTerms={"RAK4631": ["参考模组，由 nRF52840 和 SX1262 组成；GNSS 和 IMU 需另配。", "Reference module pairing nRF52840 and SX1262. GNSS and IMU depend on the selected hardware.", "https://docs.rakwireless.com/product-categories/wisblock/rak4631/datasheet/"], "nRF52840": ["负责运行程序和蓝牙通信。", "Microcontroller for application logic and Bluetooth LE.", "https://www.nordicsemi.com/Products/nRF52840"], "SX1262": ["负责 LoRa 无线收发，实际覆盖受地形与天线影响。", "LoRa transceiver. Terrain and antennas affect practical range.", "https://www.semtech.com/products/wireless-rf/lora-connect/sx1262"], "GNSS": ["用卫星信号计算坐标；遮挡会影响定位。", "Computes coordinates from satellite signals. Obstructions affect fixes.", "https://www.gps.gov/"], "BLE": ["低功耗蓝牙，用于与附近手机连接。", "Bluetooth Low Energy connects to a nearby phone.", "https://www.bluetooth.com/learn-about-bluetooth/tech-overview/"], "IMU": ["惯性传感器，用来检测移动并辅助控制唤醒。", "Inertial sensing detects movement and informs wake-up logic.", ""], "LoRa": ["低功耗无线传输；现场测试决定站距。", "Low-power radio. Field tests determine hop distance.", "https://www.semtech.com/lora"], "Mesh": ["节点可逐跳转发报文，受跳数和覆盖限制。", "Nodes forward packets hop by hop, within hop and coverage limits.", "https://meshtastic.org/docs/"], "MQTT": ["轻量发布／订阅协议。网关联网后把位置发布给订阅端。", "Lightweight publish/subscribe protocol. A connected gateway publishes position updates.", "https://mqtt.org/"], "WiFi": ["网关通过当地无线网络上联。", "The gateway uses a local wireless network for uplink.", ""], "Ethernet": ["有线网络接口，可接已有网络或外置 modem。", "Wired uplink to a local network or external modem.", ""], "4G Modem": ["外接蜂窝设备，有运营商覆盖时可为网关提供网络。", "External cellular uplink where carrier coverage is available.", ""], "Relay": ["接收并转发无线报文。", "Receives and forwards radio packets.", ""], "Gateway": ["把 LoRa 报文送入互联网服务。", "Bridges LoRa packets to internet services.", ""], "Last fix": ["最后一次收到的位置，应同时显示时间。", "Last received position, shown with its timestamp.", ""]};document.querySelectorAll('#technology [data-term]').forEach(a=>a.onclick=e=>{e.preventDefault();const d=document.querySelector('#termInfo'), [zh,en,url]=techTerms[a.dataset.term];d.querySelector('h3').textContent=a.dataset.term;const p=d.querySelectorAll('p');p[0].textContent=zh;p[1].textContent=en;const l=d.querySelector('a');l.hidden=!url;l.href=url||'#';d.showModal();});</script>
+<style>
+#technology .editable{display:grid;place-items:center start;overflow:hidden;padding:.22em .47em;font:600 1.23cqw/1.16 "Segoe UI","Microsoft YaHei",sans-serif;letter-spacing:0}
+#technology .editable>span{display:block;width:100%;min-width:0;overflow-wrap:normal}
+#technology .editable a{display:inline;white-space:nowrap;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:currentColor;text-underline-offset:.13em}
+#technology .editable a:hover{background:#ffffff65}
+#technology .editable.bar{font-size:1.24cqw;padding-block:0}
+#technology .editable.red{font-size:1.18cqw;line-height:1.23}
+#technology .editable.cyan{font-size:1.19cqw;line-height:1.19}
+#technology .editable[data-compact]{font-size:1.11cqw}
+#technology .editable[data-center]{text-align:center;place-items:center}
+</style>
+<script>
+{
+ const labels=[...document.querySelectorAll('#technology .editable:not(.title):not(.sub)')];
+ let lastWidth=0;
+ function fitTechnologyLabels(){
+  const width=document.querySelector('#technology .retro-frame').clientWidth;
+  if(!width||width===lastWidth)return;lastWidth=width;
+  for(const label of labels){
+   label.style.fontSize='';
+   const content=label.firstElementChild;
+   const style=getComputedStyle(label);
+   const available=label.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom);
+   let size=parseFloat(style.fontSize);
+   while((content.scrollHeight>available+.5||content.scrollWidth>content.clientWidth+1)&&size>width*.0065){
+    size-=.25;label.style.fontSize=size+'px';
+   }
+  }
+ }
+ fitTechnologyLabels();
+ const observer=new ResizeObserver(fitTechnologyLabels);
+ observer.observe(document.querySelector('#technology .retro-frame'));
+}
+</script><style>
+.final-board>.final-original-window{position:absolute;inset:0;clip-path:inset(30% 7.7% 31% 70.8%);pointer-events:none}
+.final-board .final-chip{left:71.8%;top:41.4%;width:18.6%;height:16.9%;display:grid;grid-template-rows:minmax(0,1fr) auto;place-items:center;gap:.2em;padding:.25em;background:linear-gradient(#a8caf6,#f6fbff);border:0;font-size:clamp(9px,1.26cqw,19px);line-height:1.12;text-align:center}
+.final-board .final-chip img{height:100%;width:80%;min-height:0;object-fit:contain;mix-blend-mode:normal}
+.final-board .final-chip small{display:block;font-size:.78em;margin-top:.18em}
+.final-board .final-chip:hover span{text-decoration:underline}
+.reg-labels p span[lang="en"]{font-style:italic;font-weight:500}
+.reg-labels article>a{font-style:italic}
+</style><style>
+.final-board [data-device-label]{display:flex;justify-content:center;align-items:center;height:2.7%;white-space:nowrap;font-size:1.10cqw;padding:0;line-height:1;letter-spacing:0}
+#final-display #inside>.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#final-display>details[open]{background:linear-gradient(155deg,#eef4ff,#c0d2fc)}
+#final-display>details .grid article{background:linear-gradient(#f9fbff,#dbe7fb);border:2px outset #edf3ff;padding:clamp(12px,2vw,24px)}
+#final-display>details .grid article h3{margin:0 0 .65em;color:#122c76;font-size:clamp(17px,2vw,25px)}
+#final-display>details .grid article p[lang=en]{font-style:italic;color:#405780}
+#final-display #budget>.grid article p{font:750 clamp(18px,2.2vw,32px) system-ui;color:#193c8f}
+#final-display #why details>summary{color:#172e7b;padding:7px;background:#dbe7ff}
+#final-display #inside button{padding:7px 12px;background:#ffed65;border:2px outset #fff5a4;color:#1b2951;cursor:pointer}
+@media(max-width:620px){#final-display #inside>.grid{grid-template-columns:1fr}}
+</style></main><style>#arrivalBubble{position:absolute;z-index:20;transform:translate(-50%,calc(-100% + 4px));width:max-content;max-width:min(32%,220px);padding:6px 10px;border:1px solid #ffffff80;border-radius:12px;background:rgba(234,244,255,.30);backdrop-filter:blur(11px) saturate(1.18);color:#fff;text-shadow:0 1px 4px #09142be0;box-shadow:inset 0 1px 0 #ffffff4d,0 3px 9px #0a143021;opacity:0;transition:opacity .24s ease,transform .28s cubic-bezier(.2,.7,.3,1);pointer-events:none;font-size:clamp(10px,1.2vw,16px);line-height:1.35}#arrivalBubble.visible{opacity:1;transform:translate(-50%,-100%)}#arrivalBubble::after{content:"";position:absolute;left:50%;bottom:-4px;width:6px;height:6px;border-right:1px solid #fff7;border-bottom:1px solid #fff7;background:#eaf4ff40;transform:translateX(-50%) rotate(45deg)}#arrivalBubble span{display:block;color:#e8eeff;font-size:.88em}#retroStatus{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}@media(prefers-reduced-motion:reduce){#arrivalBubble{transition:none}}</style><style>.retro-timeline{left:6.5%;right:6.4%;top:85%;height:12%;padding:1% 3%;gap:2%;background:linear-gradient(#e8edf8,#9caac2);border:2px outset #edf2ff;box-shadow:0 3px 6px #112a69;border-radius:5px}.retro-timeline button{background:linear-gradient(#f3f6fd,#a9b4ca)}.retro-timeline button[aria-pressed=true]{background:linear-gradient(#fff596,#ffe019)}</style><style>.invisible-hot{background:transparent!important}.route-limits{margin:10px 16px;color:#151b3b}</style><style>.tech-native{padding:clamp(15px,3vw,36px);background:linear-gradient(#7698ee,#c2d2ff,#4774d8);color:#102053}.tech-native h2{font-style:italic;color:#fff;text-shadow:2px 3px #d42f39}.tech-windows{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}.tech-windows article{background:#cdd4e1;border:4px ridge #ecf1fd;padding:0}.tech-windows h3{background:#181b87;color:white;margin:0;padding:9px}.tech-windows details{margin:8px;padding:12px;background:#edf4ff}.tech-windows summary{background:#fff083;padding:4px}.live-route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.live-route path{fill:none;stroke:#fff18d;stroke-width:3px;vector-effect:non-scaling-stroke;stroke-dasharray:100;stroke-dashoffset:100;filter:drop-shadow(0 0 3px #ffce00) drop-shadow(0 0 6px #ffda00)}</style><style>#stones{display:grid;visibility:visible}#stones>div{opacity:1!important;visibility:visible;background:#eef0f2;color:#121417;border-radius:18px}#stones>div.pending{background:#c8cdd2}#stones .photo{mix-blend-mode:normal}.site-parameters{display:flex;flex-wrap:wrap;gap:9px 20px;padding:18px 24px;color:white;background:#303438;margin:0 24px 20px;border-radius:16px}.site-parameters small{width:100%;color:#eef0f2}#stage{color:white}</style><style>#deploymentProgress{display:block;max-width:360px;width:100%;height:5px;margin-top:16px;accent-color:#e7ff00}#stage{min-height:3.3em}.hardware-flow>div.active .photo{filter:drop-shadow(0 8px 12px #6270003b)}@media(prefers-reduced-motion:reduce){.hardware-flow>div{transition:none!important}}</style><style>
+[hidden]{display:none!important}nav,.hardware-flow>div,header,section{border-radius:24px}.hardware-flow>div,nav{background:rgba(239,242,245,.76);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.65)}.hardware-flow>div{transition:opacity .45s,transform .55s}.hardware-flow>div.active{transform:translateY(-6px);box-shadow:0 12px 30px #0004}.signal-track{border-radius:99px}#language{padding:7px 15px;border:1px solid #a5a9af;border-radius:99px;background:#fff8;cursor:pointer}#simulation>div:first-of-type{border-radius:22px!important}
+</style>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.reg-labels article{background:none;text-shadow:0 1px 3px #082452aa;padding:0}
+.reg-labels h3{font-size:1.82cqw;line-height:1.06;letter-spacing:.005em;margin:0}
+.reg-labels h3 span{margin-top:.17em;font-weight:650}
+.reg-labels p{font-size:1.04cqw;line-height:1.25;margin:0}
+.reg-labels mark{position:absolute;left:0;background:transparent;padding:0;text-shadow:none;font-size:1.27cqw}
+.reg-labels article>a{position:absolute;left:0;font-size:.87cqw;white-space:nowrap}
+.reg-labels article:nth-child(1) mark{top:6.55cqw;font-size:2.3cqw}
+.reg-labels article:nth-child(1) p{position:absolute;top:10.2cqw}
+.reg-labels article:nth-child(1)>a{top:13.8cqw}
+.reg-labels article:nth-child(2) mark{top:7.1cqw}
+.reg-labels article:nth-child(2) p{position:absolute;top:8.7cqw;color:#101025;text-shadow:none}
+.reg-labels article:nth-child(2)>a{top:12.1cqw}
+.reg-labels article:nth-child(3) mark,.reg-labels article:nth-child(4) mark{top:4.82cqw}
+.reg-labels article:nth-child(3) p,.reg-labels article:nth-child(4) p{position:absolute;top:6.75cqw}
+.reg-labels article:nth-child(3)>a,.reg-labels article:nth-child(4)>a{top:9.0cqw}
+.reg-labels article:nth-child(5) p{position:absolute;top:4.65cqw}
+.reg-labels article:nth-child(5)>a{top:8.35cqw}
+.reg-labels article:nth-child(6) p,.reg-labels article:nth-child(7) p{position:absolute;top:5.6cqw}
+@media(max-width:640px){.reg-labels article{background:#153d83;padding:10px;text-shadow:none}.reg-labels article mark,.reg-labels article p,.reg-labels article>a{position:static!important;transform:none!important;color:white!important;font-size:12px!important;margin:.35em 0}.reg-labels article mark{color:#15151d!important;background:#ffeb30;padding:3px}.reg-labels h3{font-size:16px}}
+</style><style>
+.final-board>.final-original-title{position:absolute;inset:0;clip-path:inset(0 46% 85.3% 0);pointer-events:none}
+.final-board .fl{display:grid;justify-items:center;align-content:center;font-weight:680;line-height:1.12;letter-spacing:.015em}
+.final-board span.fl.fw{font-style:italic}
+.final-board .fl span{font-size:.86em}
+.final-chip{position:absolute;left:72%;top:42%;width:18.5%;height:14.5%;background:#e3eff9;color:#172754;border:2px outset white;font:700 clamp(10px,1.6cqw,22px)/1.3 system-ui;cursor:pointer}.final-chip small{font-size:.8em}
+.reg-labels h3{font-weight:720;line-height:1.08}.reg-labels p{font-weight:540;line-height:1.23}.reg-labels p span{font-style:italic;font-size:.94em}.reg-labels article>a{line-height:1.2}.reg-labels article:nth-child(3)>a,.reg-labels article:nth-child(4)>a{top:9.55cqw}.reg-labels article:nth-child(7) h3 span{font-size:.66em}
+</style><style>
+#final-display{background:linear-gradient(155deg,#d9e2ff,#8ea8ee 68%,#587edc);padding-bottom:12px}
+#final-display>details{margin:14px clamp(12px,3vw,38px);padding:0 0 0;background:#e9f0ff;color:#15264d;border:3px ridge #e5eaff;border-radius:8px;overflow:hidden;line-height:1.55}
+#final-display>details>summary{background:linear-gradient(95deg,#142778,#304ad1);color:white;padding:10px 16px;font-weight:680;font-size:clamp(15px,1.45vw,21px);cursor:pointer}
+#final-display>details>summary::marker{color:#fff16b}
+#final-display>details[open]{padding-bottom:16px}
+#final-display>details>p,#final-display>details>.flow,#final-display>details>.grid,#final-display>details>details{margin:12px 16px}
+#final-display .grid article,#final-display details details{background:#f6f8ff;border:1px solid #c7d4f0;border-radius:9px;padding:15px}
+#final-display .flow{background:#dbe7ff;border:0;border-left:3px solid #f7df42;padding:12px}
+#final-display .fold-assets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:12px;margin:15px 16px}
+#final-display .fold-assets figure{margin:0;display:grid;grid-template-rows:1fr auto;align-items:center;text-align:center;background:linear-gradient(#fafbff,#dae6fb);border:1px solid #c6d3f0;border-radius:10px;padding:8px 10px 10px}
+#final-display .fold-assets img,#final-display #inside img{height:clamp(115px,13vw,190px);object-fit:contain;mix-blend-mode:normal}
+#final-display .fold-assets figcaption{font-weight:650;font-size:13px}
+#final-display #budget{color:#15264d}#final-display #budget h3{font-size:inherit;padding:0}
+</style>
+<style>
+@media(min-width:641px){
+.reg-labels article h3{font-size:1.70cqw;line-height:1.12}
+.reg-labels article h3 span{font-size:.79em;margin-top:.12em}
+.reg-labels article p{font-size:1.00cqw;line-height:1.24}
+.reg-labels article p span{font-weight:500}
+.reg-labels article>a{font-size:.80cqw;line-height:1.15}
+.reg-labels article:nth-child(1) p{top:9.95cqw;max-width:24cqw}
+.reg-labels article:nth-child(1)>a{top:13.8cqw}
+.reg-labels article:nth-child(2) mark{top:7.05cqw}
+.reg-labels article:nth-child(2) p{top:8.7cqw;max-width:27cqw}
+.reg-labels article:nth-child(3) p,.reg-labels article:nth-child(4) p{top:6.75cqw}
+.reg-labels article:nth-child(3)>a,.reg-labels article:nth-child(4)>a{top:9.42cqw}
+.reg-labels article:nth-child(5) p{top:4.45cqw;max-width:19cqw}
+.reg-labels article:nth-child(5)>a{top:8.45cqw}
+.reg-labels article:nth-child(7) p{top:5.55cqw;max-width:12.9cqw}
+}
+</style>
+<style>
+@media(min-width:641px){
+.reg-labels article p{font-size:.94cqw;line-height:1.25}
+.reg-labels article:nth-child(1) p{top:10.35cqw}
+.reg-labels article:nth-child(1)>a{top:14.3cqw}
+.reg-labels article:nth-child(2) mark{top:7.08cqw}
+.reg-labels article:nth-child(2) p{top:8.92cqw}
+.reg-labels article:nth-child(2)>a{top:12.5cqw}
+.reg-labels article:nth-child(3) p,.reg-labels article:nth-child(4) p{top:6.96cqw}
+.reg-labels article:nth-child(3)>a,.reg-labels article:nth-child(4)>a{top:9.73cqw}
+.reg-labels article mark{left:.18cqw}
+}
+.reg-labels article:nth-child(1) mark,.reg-labels article:nth-child(3) mark,.reg-labels article:nth-child(4) mark{font-style:italic}
+</style>
+<style id="nav-fade">
+#zhNav{position:sticky;top:0;z-index:30;justify-content:center;gap:4px clamp(4px,1.5vw,24px);margin:0 auto -12px;padding:12px 20px 24px;border:0;border-radius:0;background:none;backdrop-filter:none;isolation:isolate}
+#zhNav::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(199,216,255,.95),rgba(177,199,250,.74) 55%,rgba(177,199,250,0));backdrop-filter:blur(14px);mask-image:linear-gradient(#000 50%,transparent)}
+#zhNav a{color:#14244c;text-decoration:none;padding:6px 9px;border-radius:14px;font-weight:620;font-size:clamp(11px,1.15vw,16px);white-space:nowrap}
+#zhNav a:hover,#zhNav a:focus-visible{background:#eef4ffb0;outline-offset:2px}
+#zhPage [id]{scroll-margin-top:80px}
+</style>
+
+
