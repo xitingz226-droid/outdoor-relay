@@ -1,0 +1,884 @@
+{
+  "saikung": {
+    "nodes": [
+      {
+        "lat": 22.3973323,
+        "lon": 114.3190286,
+        "agl": 5.0,
+        "kind": "fixed",
+        "label": "北潭涌主网关",
+        "source": "fixed",
+        "role": "named"
+      },
+      {
+        "lat": 22.393787611709506,
+        "lon": 114.32611070898054,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R1",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.390063617225714,
+        "lon": 114.32958193908132,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R2",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.384341477482863,
+        "lon": 114.33187898272513,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R3",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.37860110889813,
+        "lon": 114.33745540039604,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R4",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.376831445522605,
+        "lon": 114.33815671075399,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R5",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.37119746040339,
+        "lon": 114.34341801257438,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R6",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.367404220761554,
+        "lon": 114.35069522623883,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R7",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.36261024843382,
+        "lon": 114.35037043132604,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R8",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.35629208066611,
+        "lon": 114.35510158538818,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R9",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.356307223799437,
+        "lon": 114.35741901397705,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R10",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.353925813790998,
+        "lon": 114.35824362608957,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R11",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.3532804,
+        "lon": 114.3607651,
+        "agl": 2.0,
+        "kind": "fixed",
+        "label": "白腊中继",
+        "source": "fixed",
+        "role": "named"
+      },
+      {
+        "lat": 22.35749789211584,
+        "lon": 114.36773507256623,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R12",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.3578851731051,
+        "lon": 114.3688692994823,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R13",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.35806889969991,
+        "lon": 114.36941872087027,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R14",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.358258331074826,
+        "lon": 114.37101632664735,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R15",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.364084,
+        "lon": 114.3729303,
+        "agl": 5.0,
+        "kind": "fixed",
+        "label": "万宜东坝辅网关",
+        "source": "fixed",
+        "role": "named"
+      }
+    ],
+    "hops": [
+      {
+        "frm": "北潭涌主网关",
+        "to": "推算中继 R1",
+        "dist_m": 827.9,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R1",
+        "to": "推算中继 R2",
+        "dist_m": 546.7,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R2",
+        "to": "推算中继 R3",
+        "dist_m": 678.7,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R3",
+        "to": "推算中继 R4",
+        "dist_m": 858.0,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R4",
+        "to": "推算中继 R5",
+        "dist_m": 209.6,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R5",
+        "to": "推算中继 R6",
+        "dist_m": 827.7,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R6",
+        "to": "推算中继 R7",
+        "dist_m": 859.0,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R7",
+        "to": "推算中继 R8",
+        "dist_m": 534.1,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R8",
+        "to": "推算中继 R9",
+        "dist_m": 854.6,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R9",
+        "to": "推算中继 R10",
+        "dist_m": 238.3,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R10",
+        "to": "推算中继 R11",
+        "dist_m": 278.0,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R11",
+        "to": "白腊中继",
+        "dist_m": 269.1,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "白腊中继",
+        "to": "推算中继 R12",
+        "dist_m": 856.6,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R12",
+        "to": "推算中继 R13",
+        "dist_m": 124.3,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R13",
+        "to": "推算中继 R14",
+        "dist_m": 60.1,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R14",
+        "to": "推算中继 R15",
+        "dist_m": 165.6,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R15",
+        "to": "万宜东坝辅网关",
+        "dist_m": 677.0,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      }
+    ],
+    "n_computed": 15,
+    "n_nodes": 18,
+    "all_ok": true
+  },
+  "william": {
+    "nodes": [
+      {
+        "lat": -38.0140074,
+        "lon": 146.6964831,
+        "agl": 5.0,
+        "kind": "fixed",
+        "label": "Cowwarr 镇区网关",
+        "source": "fixed",
+        "role": "named"
+      },
+      {
+        "lat": -38.00979068081499,
+        "lon": 146.68838024139404,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R1",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": -38.00938276908597,
+        "lon": 146.68222360981156,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R2",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": -38.00532717973853,
+        "lon": 146.67396621594833,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R3",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": -38.00172355511777,
+        "lon": 146.66720433259286,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R4",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": -37.9999195,
+        "lon": 146.6587103,
+        "agl": 5.0,
+        "kind": "fixed",
+        "label": "Cowwarr Weir 节点",
+        "source": "fixed",
+        "role": "named"
+      }
+    ],
+    "hops": [
+      {
+        "frm": "Cowwarr 镇区网关",
+        "to": "推算中继 R1",
+        "dist_m": 850.8,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R1",
+        "to": "推算中继 R2",
+        "dist_m": 541.3,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R2",
+        "to": "推算中继 R3",
+        "dist_m": 852.5,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R3",
+        "to": "推算中继 R4",
+        "dist_m": 715.2,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R4",
+        "to": "Cowwarr Weir 节点",
+        "dist_m": 770.8,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      }
+    ],
+    "n_computed": 4,
+    "n_nodes": 6,
+    "all_ok": true
+  },
+  "potoy": {
+    "nodes": [
+      {
+        "lat": 22.1633438,
+        "lon": 114.2530887,
+        "agl": 5.0,
+        "kind": "fixed",
+        "label": "蒲台码头网关",
+        "source": "fixed",
+        "role": "named"
+      },
+      {
+        "lat": 22.16216534596124,
+        "lon": 114.25707864623519,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R1",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 22.1568833,
+        "lon": 114.2577833,
+        "agl": 2.0,
+        "kind": "fixed",
+        "label": "岛上灯塔参考（路径端点，非岛心）",
+        "source": "fixed",
+        "role": "named"
+      }
+    ],
+    "hops": [
+      {
+        "frm": "蒲台码头网关",
+        "to": "推算中继 R1",
+        "dist_m": 431.3,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R1",
+        "to": "岛上灯塔参考（路径端点，非岛心）",
+        "dist_m": 591.8,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      }
+    ],
+    "n_computed": 1,
+    "n_nodes": 3,
+    "all_ok": true
+  },
+  "walami": {
+    "nodes": [
+      {
+        "lat": 23.3011979,
+        "lon": 121.2584273,
+        "agl": 5.0,
+        "kind": "fixed",
+        "label": "南安道路端网关",
+        "source": "fixed",
+        "role": "named"
+      },
+      {
+        "lat": 23.30357924165954,
+        "lon": 121.25307660786166,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R1",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.30392968900793,
+        "lon": 121.25269502311755,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R2",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.3094006192945,
+        "lon": 121.24693149669633,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R3",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.31518325776607,
+        "lon": 121.24160818325174,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R4",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.315693871706046,
+        "lon": 121.24090959448722,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R5",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.315989748532747,
+        "lon": 121.23982030142736,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R6",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.318154885952588,
+        "lon": 121.23765170269905,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R7",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.319300161735576,
+        "lon": 121.23621537999213,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R8",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.32415177204756,
+        "lon": 121.23484064093475,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R9",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.3273643,
+        "lon": 121.230497,
+        "agl": 5.0,
+        "kind": "fixed",
+        "label": "山风节点",
+        "source": "fixed",
+        "role": "named"
+      },
+      {
+        "lat": 23.332190746157302,
+        "lon": 121.22397958382817,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R10",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.333991560048965,
+        "lon": 121.22195445882824,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R11",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.335651538904326,
+        "lon": 121.22039961586518,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R12",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.341052253962026,
+        "lon": 121.21458583267042,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R13",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.345896,
+        "lon": 121.2132167,
+        "agl": 2.0,
+        "kind": "fixed",
+        "label": "佳心中继",
+        "source": "fixed",
+        "role": "named"
+      },
+      {
+        "lat": 23.348047936958082,
+        "lon": 121.20533466339111,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R14",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.346053861562936,
+        "lon": 121.20443184499265,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R15",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.348047936958082,
+        "lon": 121.19786739349365,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R16",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.349562972411473,
+        "lon": 121.18960901859214,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R17",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.35220299877597,
+        "lon": 121.18629821930756,
+        "agl": 2.0,
+        "kind": "computed",
+        "label": "推算中继 R18",
+        "source": "由通视推算，不是已确认现场点",
+        "role": "relay"
+      },
+      {
+        "lat": 23.3537493,
+        "lon": 121.1863941,
+        "agl": 2.0,
+        "kind": "fixed",
+        "label": "瓦拉米山屋（步道端点，非网关）",
+        "source": "fixed",
+        "role": "named"
+      }
+    ],
+    "hops": [
+      {
+        "frm": "南安道路端网关",
+        "to": "推算中继 R1",
+        "dist_m": 607.2,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R1",
+        "to": "推算中继 R2",
+        "dist_m": 55.1,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R2",
+        "to": "推算中继 R3",
+        "dist_m": 846.5,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R3",
+        "to": "推算中继 R4",
+        "dist_m": 842.0,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R4",
+        "to": "推算中继 R5",
+        "dist_m": 91.2,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R5",
+        "to": "推算中继 R6",
+        "dist_m": 116.0,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R6",
+        "to": "推算中继 R7",
+        "dist_m": 327.1,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R7",
+        "to": "推算中继 R8",
+        "dist_m": 194.2,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R8",
+        "to": "推算中继 R9",
+        "dist_m": 557.4,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R9",
+        "to": "山风节点",
+        "dist_m": 569.5,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "山风节点",
+        "to": "推算中继 R10",
+        "dist_m": 854.9,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R10",
+        "to": "推算中继 R11",
+        "dist_m": 287.8,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R11",
+        "to": "推算中继 R12",
+        "dist_m": 243.5,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R12",
+        "to": "推算中继 R13",
+        "dist_m": 844.4,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R13",
+        "to": "佳心中继",
+        "dist_m": 556.4,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "佳心中继",
+        "to": "推算中继 R14",
+        "dist_m": 839.5,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R14",
+        "to": "推算中继 R15",
+        "dist_m": 240.1,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R15",
+        "to": "推算中继 R16",
+        "dist_m": 705.9,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R16",
+        "to": "推算中继 R17",
+        "dist_m": 859.8,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R17",
+        "to": "推算中继 R18",
+        "dist_m": 447.7,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      },
+      {
+        "frm": "推算中继 R18",
+        "to": "瓦拉米山屋（步道端点，非网关）",
+        "dist_m": 172.2,
+        "los": true,
+        "within": true,
+        "gap": false,
+        "ok": true
+      }
+    ],
+    "n_computed": 18,
+    "n_nodes": 22,
+    "all_ok": true
+  }
+}
