@@ -1,0 +1,297 @@
+{
+  "rules": {
+    "cap_m": 860.0,
+    "cap_source": "Ojo et al., Future Internet 2021, dense forest, 868 MHz, TX 10.4 dBm, SF12; https://www.mdpi.com/1999-5903/13/5/115",
+    "h_gateway_m": 5.0,
+    "h_relay_m": 2.0,
+    "h_target_m": 1.5,
+    "curvature": "4/3 equivalent earth radius",
+    "dem": "Terrarium SRTM-class z14",
+    "note": "规划下界，不是本地实测通距；点由通视推算，不是已确认现场点"
+  },
+  "boundary_note": "未找到官方「新娘潭地区」多边形。A/B 是可核实的步道/地名近似，不是法定范围。七妇娘林不是已核实的官方郊野公园名；本区官方毗邻船湾郊野公园与八仙岭郊野公园。",
+  "sources": {
+    "afcd_trail": "https://www.hiking.gov.hk/trail/info/id/T2lic3MxTlFSUnVjZUQ2dGxOb25iQT09",
+    "afcd_gpx": "https://www.hiking.gov.hk/console/public/uploads/others/file/gpx/BridesPoolNatureTrail.gpx",
+    "map_gov_hk": "https://www.map.gov.hk/gm/map/s/trail/nat_5?lg=tc",
+    "geopark": "https://www.geopark.gov.hk/tc/discover/attractions/brides-pool",
+    "osm_pool": "https://www.openstreetmap.org/way/206258515",
+    "osm_mirror": "https://www.openstreetmap.org/way/207004394",
+    "osm_connector": "https://www.openstreetmap.org/way/195368182",
+    "osm_pavilion": "https://www.openstreetmap.org/node/2171206021",
+    "osm_bus": "https://www.openstreetmap.org/node/7330945133"
+  },
+  "A": {
+    "definition": "线状走廊：渔护署新娘潭自然教育径官方 GPX + OSM 具名「新娘潭至照镜潭官方山径」及至照镜潭的短连接 + 步道口 180 m 内的新娘潭路路段与邻近停车场。不含整条八仙岭自然教育径、乌蛟腾村街、大美督，也不含新娘潭路南段烧烤区（公开针脚 PSLB5 约 22.482374,114.242651，在潭南约 2.3 km）。",
+    "official_trail_advertised_km": 0.7,
+    "official_gpx_m": 900.1,
+    "connector_m": 232.9,
+    "road_stub_m": 636.5,
+    "parking_ways_m": 272.8,
+    "access_paths_m": 128.7,
+    "corridor_length_sum_m": 2171.0,
+    "corridor_halfwidth_m": 15.0,
+    "target_land_m2": 50617.4,
+    "target_land_ha": 5.0617,
+    "gateways": 1,
+    "relays": 2,
+    "total_nodes": 3,
+    "covered_m2": 50617.4,
+    "covered_pct": 100.0,
+    "residual_m2": 0.0,
+    "residual_pct": 0.0,
+    "residual_components": 0,
+    "residual_top": [],
+    "residual_other_px": 0,
+    "residual_other_m2": 0.0,
+    "nodes": [
+      {
+        "lat": 22.503112,
+        "lon": 114.236768,
+        "agl": 5.0,
+        "kind": "gateway",
+        "label": "网关（狮子亭路边）",
+        "source": "OSM n2171206021 新娘潭狮子亭，规划网关点，不是已确认现场安装点",
+        "parent": null,
+        "hop_m": null
+      },
+      {
+        "lat": 22.503759561748183,
+        "lon": 114.24051143643234,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 A1",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 0,
+        "hop_m": 391.2,
+        "elev_m": 64.4,
+        "gain_m2": 21284.1
+      },
+      {
+        "lat": 22.5022056411579,
+        "lon": 114.2374334181844,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 A2",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 0,
+        "hop_m": 121.8,
+        "elev_m": 77.1,
+        "gain_m2": 387.0
+      }
+    ],
+    "history": [
+      {
+        "nodes": 1,
+        "covered_m2": 28946.33098067414,
+        "target_m2": 50617.445737001246,
+        "pct": 57.18647110538498
+      },
+      {
+        "nodes": 2,
+        "added": "推算中继 A1",
+        "hop_m": 391.2,
+        "gain_m2": 21284.1,
+        "covered_m2": 50230.47083845232,
+        "target_m2": 50617.445737001246,
+        "pct": 99.23549105863702
+      },
+      {
+        "nodes": 3,
+        "added": "推算中继 A2",
+        "hop_m": 121.8,
+        "gain_m2": 387.0,
+        "covered_m2": 50617.445737001246,
+        "target_m2": 50617.445737001246,
+        "pct": 100.0
+      }
+    ]
+  },
+  "B": {
+    "definition": "面状近似（非正式边界）：上述走廊、新娘潭/照镜潭/譅龙潭水面边界，以及步道口与景点设施点（狮子亭、巴士站、渔护署公厕、停车场、照镜潭观景点与渔护署地图牌、两处瀑布、径上野餐点）外侧 150 m 缓冲区，再去掉水面与 DEM≤0.5 m 的像素。不是整个船湾或八仙岭郊野公园。",
+    "buffer_m": 150.0,
+    "target_land_m2": 430556.6,
+    "target_land_ha": 43.0557,
+    "flat_disk_m2": 2323521.9,
+    "flat_packing_floor_nodes": 1,
+    "gateways": 1,
+    "relays": 7,
+    "total_nodes": 8,
+    "covered_m2": 430247.0,
+    "covered_pct": 99.93,
+    "residual_m2": 309.6,
+    "residual_pct": 0.07,
+    "residual_components": 1,
+    "residual_top": [
+      {
+        "px": 4,
+        "m2": 309.6,
+        "centroid": [
+          22.504905,
+          114.235368
+        ],
+        "elev_min": 81.3,
+        "elev_max": 87.1,
+        "elev_mean": 84.0
+      }
+    ],
+    "residual_other_px": 0,
+    "residual_other_m2": 0.0,
+    "nodes": [
+      {
+        "lat": 22.503112,
+        "lon": 114.236768,
+        "agl": 5.0,
+        "kind": "gateway",
+        "label": "网关（狮子亭路边）",
+        "source": "OSM n2171206021 新娘潭狮子亭，规划网关点，不是已确认现场安装点",
+        "parent": null,
+        "hop_m": null
+      },
+      {
+        "lat": 22.503759561748183,
+        "lon": 114.24051143643234,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 A1",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 0,
+        "hop_m": 391.2,
+        "elev_m": 64.4,
+        "gain_m2": 21284.1
+      },
+      {
+        "lat": 22.5022056411579,
+        "lon": 114.2374334181844,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 A2",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 0,
+        "hop_m": 121.8,
+        "elev_m": 77.1,
+        "gain_m2": 387.0
+      },
+      {
+        "lat": 22.503254557522755,
+        "lon": 114.24221245399292,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 B3",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 0,
+        "hop_m": 559.5,
+        "elev_m": 127.2,
+        "gain_m2": 60677.4,
+        "added_for": "B"
+      },
+      {
+        "lat": 22.500341772713995,
+        "lon": 114.23945055360717,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 B4",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 1,
+        "hop_m": 395.4,
+        "elev_m": 53.3,
+        "gain_m2": 31656.5,
+        "added_for": "B"
+      },
+      {
+        "lat": 22.504673690916285,
+        "lon": 114.23489015099358,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 B5",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 2,
+        "hop_m": 378.9,
+        "elev_m": 104.0,
+        "gain_m2": 25695.0,
+        "added_for": "B"
+      },
+      {
+        "lat": 22.505576644970454,
+        "lon": 114.24105210880005,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 B6",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 3,
+        "hop_m": 284.4,
+        "elev_m": 114.9,
+        "gain_m2": 14782.2,
+        "added_for": "B"
+      },
+      {
+        "lat": 22.50034554501351,
+        "lon": 114.2399173239726,
+        "agl": 2.0,
+        "kind": "relay",
+        "label": "推算中继 B7",
+        "source": "由通视推算，不是已确认现场点",
+        "parent": 4,
+        "hop_m": 48.0,
+        "elev_m": 29.5,
+        "gain_m2": 1780.2,
+        "added_for": "B"
+      }
+    ],
+    "history": [
+      {
+        "nodes": 3,
+        "phase": "after A",
+        "covered_m2": 295655.6442334171,
+        "target_m2": 430556.56624248205,
+        "pct": 68.6682465009508
+      },
+      {
+        "nodes": 4,
+        "added": "推算中继 B3",
+        "hop_m": 559.5,
+        "gain_m2": 60677.4,
+        "covered_m2": 356333.03930145176,
+        "target_m2": 430556.56624248205,
+        "pct": 82.76102775791163
+      },
+      {
+        "nodes": 5,
+        "added": "推算中继 B4",
+        "hop_m": 395.4,
+        "gain_m2": 31656.5,
+        "covered_m2": 387989.5776090112,
+        "target_m2": 430556.56624248205,
+        "pct": 90.1134968153063
+      },
+      {
+        "nodes": 6,
+        "added": "推算中继 B5",
+        "hop_m": 378.9,
+        "gain_m2": 25695.0,
+        "covered_m2": 413684.57694074104,
+        "target_m2": 430556.56624248205,
+        "pct": 96.08135361887872
+      },
+      {
+        "nodes": 7,
+        "added": "推算中继 B6",
+        "hop_m": 284.4,
+        "gain_m2": 14782.2,
+        "covered_m2": 428466.81517060334,
+        "target_m2": 430556.56624248205,
+        "pct": 99.51463960006086
+      },
+      {
+        "nodes": 8,
+        "added": "推算中继 B7",
+        "hop_m": 48.0,
+        "gain_m2": 1780.2,
+        "covered_m2": 430246.9873886908,
+        "target_m2": 430556.56624248205,
+        "pct": 99.92809798338625
+      }
+    ]
+  },
+  "map": "maps/map-brides-pool-viewshed.png"
+}
