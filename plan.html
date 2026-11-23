@@ -65,9 +65,9 @@ footer { margin-top:28px; color:var(--muted); font-size:15px; }
 <body>
 <main>
 <header class="top">
-<p class="links"><a href="index.html">设计站</a> · <a href="mesh-sar-plan.md">Markdown</a> · <a href="maps/relay_plan.json">四案坐标</a> · <a href="maps/brides-pool/coverage_result.json">新娘潭坐标</a></p>
+<p class="links"><a href="index.html">设计站</a> · <a href="maps/relay_plan.json">四案坐标</a> · <a href="maps/brides-pool/coverage_result.json">新娘潭坐标</a></p>
 <h1>荒野搜救 LoRa mesh 通视规划</h1>
-<p>五处案例的网关和中继按几何通视布置。佩戴节点用卫星定位取得坐标，经 LoRa 逐跳送到道路端网关，再交到接收端。节点不内置蜂窝模块。链路中断时，接收端保留最后一次收到的位置和时间。</p>
+<p>挂件发送卫星坐标，山径中继接力，网关把报文送到搜救地图。</p>
 <p class="chain">定位节点 → LoRa 中继 → 道路端网关 → 接收端</p>
 </header>
 <nav class="toc" aria-label="目录">
@@ -79,22 +79,22 @@ footer { margin-top:28px; color:var(--muted); font-size:15px; }
 <a href="#potoy">蒲台</a>
 <a href="#walami">瓦拉米</a>
 <a href="#brides">新娘潭</a>
-<a href="#unresolved">未接入</a>
+<a href="#sos">SOS 省电逻辑</a>
 </nav>
 
 <section class="panel" id="rules">
-<h2>通视规则</h2>
-<p>数字高程用 Terrarium（SRTM 类）。地球曲率按 4/3 等效半径计入。天线高度：网关 5 m（离地），中继 2 m，目标 1.5 m。</p>
-<p>只给同时具备几何通视、且平面距离不超过 860 m 的像素上色。填色边缘随地形曲折，不是圆。两个及以上源都能看见的像素颜色加深。脊线背坡、被挡住的谷底、被挡住的跨海和水面留空。</p>
-<p>860 m 是密林对照，取自 Future Internet 2021（Ojo 等）：868 MHz，发射 10.4 dBm，SF12，最远点只有少量成功送达。<a href="https://www.mdpi.com/1999-5903/13/5/115">论文</a>。这不是本地实测通距。图上另行写出的丘陵林地 3.2 km，是车载发射、接收天线高 2.5 m 的试验林结果，不用作本图填色半径。</p>
-<p>规划点由通视推算，不是已确认现场点。一跳只连接几何通视且平面距离不超过 860 m 的相邻节点。节点要能沿同一规则跳回至少一处有回传的路边或公路端网关。在这套规则下，规划链相连是必要条件，不足以说明实地可行。</p>
-<p>底图是 Esri World Imagery。四张案例图下方的青色曲线是规划走廊高程剖面，横轴是相邻节点地图连线的距离，不是步道实测里程。剖面高程取图上标注的公开地形模型（Open-Meteo Elevation）。</p>
+<h2>怎么计算</h2>
+<p>用 Terrarium 数字高程建立地形剖面，按 4/3 等效地球半径修正。网关、中继、挂件的天线分别取离地 5、2、1.5 m。</p>
+<p><strong>单跳：</strong>两点平面距离 ≤ 860 m，且连线高于沿途地形。逐段连接候选节点，查每个覆盖点能否沿链路回到联网网关，并按实际固件配置核对转发次数。</p>
+<p><strong>取 860 m 的理由：</strong>868 MHz、10.4 dBm、SF12 的密林试验在 860 m 处收到少量报文，因此用该距离筛选候选点，走测再据送达率定站距。<a href="https://www.mdpi.com/1999-5903/13/5/115">密林试验</a>。</p>
+<p><strong>覆盖比例：</strong>通视且在距离上限内的陆地像素面积 ÷ 评估区的陆地面积。浅黄是单站通视，深橙是多站重叠。</p>
+
 </section>
 
 
 <section class="panel" id="legend">
-<h2>图例</h2>
-<p>符号与五张图上的图例一致。</p>
+<details><summary>展开地图图例</summary>
+
 <ul class="legend">
 <li><i class="sw single"></i><span>浅黄填色：单源几何通视，且平面距离不超过 860 m。边缘不规则，不是圆。</span></li>
 <li><i class="sw multi"></i><span>深橙填色：多源重叠，通视范围叠加后加深，不是圆的并集。</span></li>
@@ -115,98 +115,96 @@ footer { margin-top:28px; color:var(--muted); font-size:15px; }
 <li><i class="sw hop green"></i><span>新娘潭绿色实线：规划跳，几何通视且不超过 860 m。</span></li>
 <li><i class="sw magenta"></i><span>新娘潭品红菱形：150 m 缓冲档增补中继（B3–B7），不是已确认现场点。橙色菱形是走廊档中继 A1、A2。</span></li>
 </ul>
-<p>新娘潭图上文字标出巴士站、新娘潭瀑布、照镜潭瀑布。水面与 DEM 海平面不上色。瓦拉米图例写明谷底对照峡谷穿戴试验的 300 m，谷底不填色。蒲台左幅钓鱼翁周围的橙色虚线圆是 1.5 km 地图参照，不是通视；左幅黄色虚线是钓鱼翁至码头 15.1 km 的地图直线。</p>
+</details>
 </section>
 
 <h2 id="cases">五处案例</h2>
-<p>直线距离由坐标文件中的具名点算出。860 m 重分配后的四条搜救走廊是西贡东、William、蒲台、瓦拉米。新娘潭是步道走廊的覆盖规划，没有对应的单起报道。</p>
-<div class="table-wrap"><table><caption>五处案例</caption><thead><tr><th>案例</th><th>网关</th><th>中继</th><th>本规则下已相连</th><th>未接入</th></tr></thead><tbody><tr><td>西贡东</td><td>北潭涌（主），万宜东坝（辅）</td><td>白腊 + 15 个推算中继，共 16 个</td><td>北潭涌–白腊–东坝，跳距之和 8.87 km，相邻 60.1–859.0 m</td><td>花山峰位</td></tr><tr><td>William</td><td>Cowwarr 镇区；堰为走廊节点</td><td>4 个推算中继</td><td>镇区–堰，跳距之和 3.73 km，相邻 541.3–852.5 m</td><td>营地、寻获点、报道搜索重点</td></tr><tr><td>蒲台</td><td>岛上码头一处</td><td>1 个推算中继</td><td>码头–灯塔参考，跳距之和 1.02 km（431.3 m、591.8 m）。不设跨海链</td><td>钓鱼翁–码头跨海</td></tr><tr><td>瓦拉米</td><td>南安或山风道路端；本链起点在南安</td><td>佳心 + 18 个推算中继；山屋是端点，不是网关</td><td>南安–山风–佳心–山屋，跳距之和 10.26 km。官方步道 14 km，现场可能要更多中继</td><td>7.5K、11.4K、谷底</td></tr><tr><td>新娘潭</td><td>狮子亭路边 1 处</td><td>走廊 2 个；150 m 缓冲共 7 个</td><td>走廊约 1.9 km，土地覆盖 100%；150 m 缓冲 43.0557 公顷，覆盖 99.93%，残余 309.6 m²</td><td>无官方地区多边形</td></tr></tbody></table></div>
+
+<details><summary>查看五处案例数据总表</summary><div class="table-wrap"><table><caption>五处案例</caption><thead><tr><th>案例</th><th>网关</th><th>中继</th><th>本规则下已相连</th><th>未接入</th></tr></thead><tbody><tr><td>西贡东</td><td>北潭涌（主），万宜东坝（辅）</td><td>白腊 + 15 个推算中继，共 16 个</td><td>北潭涌–白腊–东坝，跳距之和 8.87 km，相邻 60.1–859.0 m</td><td>花山峰位</td></tr><tr><td>William</td><td>Cowwarr 镇区；堰为走廊节点</td><td>4 个推算中继</td><td>镇区–堰，跳距之和 3.73 km，相邻 541.3–852.5 m</td><td>营地、寻获点、报道搜索重点</td></tr><tr><td>蒲台</td><td>岛上码头一处</td><td>1 个推算中继</td><td>码头–灯塔参考，跳距之和 1.02 km（431.3 m、591.8 m）。不设跨海链</td><td>钓鱼翁–码头跨海</td></tr><tr><td>瓦拉米</td><td>南安或山风道路端；本链起点在南安</td><td>佳心 + 18 个推算中继；山屋是端点，不是网关</td><td>南安–山风–佳心–山屋，跳距之和 10.26 km。官方步道 14 km，现场可能要更多中继</td><td>7.5K、11.4K、谷底</td></tr><tr><td>新娘潭</td><td>狮子亭路边 1 处</td><td>走廊 2 个；150 m 缓冲共 7 个</td><td>走廊约 1.9 km，土地覆盖 100%；150 m 缓冲 43.0557 公顷，覆盖 99.93%，残余 309.6 m²</td><td>无官方地区多边形</td></tr></tbody></table></div></details>
 
 <section id="saikung">
 <h2>西贡东</h2>
-<p>2026 年 5 月 25 日，约 100 人的队伍由白腊出发，经花山前往万宜东坝。当晚 22:15，警方接报三名男子在万宜路附近山径失联，救援在北潭涌集合。5 月 26 日 04:50 在山上寻获 76 岁的陈；73 岁的莫与 64 岁的潘已自行落山。三人均无须送院，消防于 11:05 停止动员。报道见 <a href="https://www.hk01.com/%E7%AA%81%E7%99%BC/60353554/%E8%A5%BF%E8%B2%A2%E8%A1%8C%E5%B1%B1%E5%A4%B1%E8%B9%A4%E9%A9%9A%E9%AD%82-3%E7%94%B7%E5%85%A8%E9%83%A8%E5%AE%89%E5%85%A8%E5%B0%8B%E5%9B%9E-%E6%93%9A%E6%82%89%E5%85%B6%E4%B8%AD2%E4%BA%BA%E6%97%A9%E5%B7%B2%E8%87%AA%E8%A1%8C%E8%90%BD%E5%B1%B1">HK01（2026-05-26）</a>。</p>
-<p>860 m 重分配之后，网关仍在北潭涌和万宜东坝，天线离地 5 m。北潭涌是救援集合的郊野公园入口一侧，东坝是队伍原定终点的坝头。白腊保留为中继，天线离地 2 m。另有 15 个通视推算中继，连白腊共 16 个中继。</p>
-<p>北潭涌至白腊直线 6.51 km，中间 11 个推算中继，12 跳，跳距 209.6–859.0 m，均几何通视且不超过 860 m。白腊至东坝直线 1.73 km，中间 4 个推算中继，5 跳，跳距 60.1–856.6 m，均几何通视且不超过 860 m。白腊至东坝有几跳很短，是为绕开局部脊线转角。两段跳距之和 8.87 km。北潭涌至东坝直线 6.66 km。</p>
-<p>花山峰位没有解析出坐标，不落点，不接入。图上灰色空心圈是白腊与东坝的路径中点，不是花山峰位，也不是通视源。破边洲的白点是海岸参照，不是源。</p>
-<p>频段按香港 920–925 MHz、<a href="https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1078.pdf">HKCA 1078</a> 核对。搜索队节点沿走廊转发，不计入上述 16 个中继。</p>
+<p>事件报道：<a href="https://www.hk01.com/%E7%AA%81%E7%99%BC/60353554/%E8%A5%BF%E8%B2%A2%E8%A1%8C%E5%B1%B1%E5%A4%B1%E8%B9%A4%E9%A9%9A%E9%AD%82-3%E7%94%B7%E5%85%A8%E9%83%A8%E5%AE%89%E5%85%A8%E5%B0%8B%E5%9B%9E-%E6%93%9A%E6%82%89%E5%85%B6%E4%B8%AD2%E4%BA%BA%E6%97%A9%E5%B7%B2%E8%87%AA%E8%A1%8C%E8%90%BD%E5%B1%B1">HK01（2026-05-26）</a>。</p>
+<p><strong>布点：</strong>北潭涌和万宜东坝设网关，白腊设中继，另加 15 个推算中继。白腊至东坝用短跳绕过脊线转角。</p>
+<p><strong>计算：</strong>北潭涌 → 白腊，直线 6.51 km，12 段无线连接，每段 209.6–859.0 m。白腊 → 东坝，直线 1.73 km，5 段，每段 60.1–856.6 m。两段合计 8.87 km。</p>
+<p><strong>进场：</strong>北潭涌作为集结点。最新坐标在白腊侧，由白腊侧进场。坐标在东坝侧，由万宜东坝沿山径向白腊搜索。便携节点先在对应山径入口收包，再按报文坐标和时间选分岔。花山峰位待定位。</p>
+<p>频段按香港 920–925 MHz、<a href="https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1078.pdf">HKCA 1078</a> 核对。</p>
 <figure>
-<figcaption>西贡东。网关留在北潭涌和万宜东坝，白腊为中继，另有 15 个推算中继。花山峰位未落点。浅黄为单源通视，深橙为重叠。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
+<figcaption>西贡东通视与进场侧。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
 <img src="maps/map-saikung-viewshed.png" width="1600" height="2773" alt="西贡东卫星底图。北潭涌与万宜东坝为蓝色网关，白腊为黄色三角，橙色菱形为 15 个推算中继，黄色实线连接相邻跳。填色边缘不规则。灰色空心圈不是花山峰位。">
 </figure>
-<div class="table-wrap"><table class="coords"><caption>西贡东节点，取自 maps/relay_plan.json 的 saikung</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>北潭涌主网关</td><td>22.3973323</td><td>114.3190286</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>22.393787611709506</td><td>114.32611070898054</td><td>2.0</td><td>北潭涌主网关</td><td>827.9</td><td>是</td></tr><tr><td>推算中继 R2</td><td>22.390063617225714</td><td>114.32958193908132</td><td>2.0</td><td>推算中继 R1</td><td>546.7</td><td>是</td></tr><tr><td>推算中继 R3</td><td>22.384341477482863</td><td>114.33187898272513</td><td>2.0</td><td>推算中继 R2</td><td>678.7</td><td>是</td></tr><tr><td>推算中继 R4</td><td>22.37860110889813</td><td>114.33745540039604</td><td>2.0</td><td>推算中继 R3</td><td>858.0</td><td>是</td></tr><tr><td>推算中继 R5</td><td>22.376831445522605</td><td>114.33815671075399</td><td>2.0</td><td>推算中继 R4</td><td>209.6</td><td>是</td></tr><tr><td>推算中继 R6</td><td>22.37119746040339</td><td>114.34341801257438</td><td>2.0</td><td>推算中继 R5</td><td>827.7</td><td>是</td></tr><tr><td>推算中继 R7</td><td>22.367404220761554</td><td>114.35069522623883</td><td>2.0</td><td>推算中继 R6</td><td>859.0</td><td>是</td></tr><tr><td>推算中继 R8</td><td>22.36261024843382</td><td>114.35037043132604</td><td>2.0</td><td>推算中继 R7</td><td>534.1</td><td>是</td></tr><tr><td>推算中继 R9</td><td>22.35629208066611</td><td>114.35510158538818</td><td>2.0</td><td>推算中继 R8</td><td>854.6</td><td>是</td></tr><tr><td>推算中继 R10</td><td>22.356307223799437</td><td>114.35741901397705</td><td>2.0</td><td>推算中继 R9</td><td>238.3</td><td>是</td></tr><tr><td>推算中继 R11</td><td>22.353925813790998</td><td>114.35824362608957</td><td>2.0</td><td>推算中继 R10</td><td>278.0</td><td>是</td></tr><tr><td>白腊中继</td><td>22.3532804</td><td>114.3607651</td><td>2.0</td><td>推算中继 R11</td><td>269.1</td><td>是</td></tr><tr><td>推算中继 R12</td><td>22.35749789211584</td><td>114.36773507256623</td><td>2.0</td><td>白腊中继</td><td>856.6</td><td>是</td></tr><tr><td>推算中继 R13</td><td>22.3578851731051</td><td>114.3688692994823</td><td>2.0</td><td>推算中继 R12</td><td>124.3</td><td>是</td></tr><tr><td>推算中继 R14</td><td>22.35806889969991</td><td>114.36941872087027</td><td>2.0</td><td>推算中继 R13</td><td>60.1</td><td>是</td></tr><tr><td>推算中继 R15</td><td>22.358258331074826</td><td>114.37101632664735</td><td>2.0</td><td>推算中继 R14</td><td>165.6</td><td>是</td></tr><tr><td>万宜东坝辅网关</td><td>22.364084</td><td>114.3729303</td><td>5.0</td><td>推算中继 R15</td><td>677.0</td><td>是</td></tr></tbody></table></div>
-<p class="note">推算中继的来源字段为「由通视推算，不是已确认现场点」。</p>
+<details><summary>查看节点坐标与跳距</summary><div class="table-wrap"><table class="coords"><caption>西贡东节点，取自 maps/relay_plan.json 的 saikung</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>北潭涌主网关</td><td>22.3973323</td><td>114.3190286</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>22.393787611709506</td><td>114.32611070898054</td><td>2.0</td><td>北潭涌主网关</td><td>827.9</td><td>是</td></tr><tr><td>推算中继 R2</td><td>22.390063617225714</td><td>114.32958193908132</td><td>2.0</td><td>推算中继 R1</td><td>546.7</td><td>是</td></tr><tr><td>推算中继 R3</td><td>22.384341477482863</td><td>114.33187898272513</td><td>2.0</td><td>推算中继 R2</td><td>678.7</td><td>是</td></tr><tr><td>推算中继 R4</td><td>22.37860110889813</td><td>114.33745540039604</td><td>2.0</td><td>推算中继 R3</td><td>858.0</td><td>是</td></tr><tr><td>推算中继 R5</td><td>22.376831445522605</td><td>114.33815671075399</td><td>2.0</td><td>推算中继 R4</td><td>209.6</td><td>是</td></tr><tr><td>推算中继 R6</td><td>22.37119746040339</td><td>114.34341801257438</td><td>2.0</td><td>推算中继 R5</td><td>827.7</td><td>是</td></tr><tr><td>推算中继 R7</td><td>22.367404220761554</td><td>114.35069522623883</td><td>2.0</td><td>推算中继 R6</td><td>859.0</td><td>是</td></tr><tr><td>推算中继 R8</td><td>22.36261024843382</td><td>114.35037043132604</td><td>2.0</td><td>推算中继 R7</td><td>534.1</td><td>是</td></tr><tr><td>推算中继 R9</td><td>22.35629208066611</td><td>114.35510158538818</td><td>2.0</td><td>推算中继 R8</td><td>854.6</td><td>是</td></tr><tr><td>推算中继 R10</td><td>22.356307223799437</td><td>114.35741901397705</td><td>2.0</td><td>推算中继 R9</td><td>238.3</td><td>是</td></tr><tr><td>推算中继 R11</td><td>22.353925813790998</td><td>114.35824362608957</td><td>2.0</td><td>推算中继 R10</td><td>278.0</td><td>是</td></tr><tr><td>白腊中继</td><td>22.3532804</td><td>114.3607651</td><td>2.0</td><td>推算中继 R11</td><td>269.1</td><td>是</td></tr><tr><td>推算中继 R12</td><td>22.35749789211584</td><td>114.36773507256623</td><td>2.0</td><td>白腊中继</td><td>856.6</td><td>是</td></tr><tr><td>推算中继 R13</td><td>22.3578851731051</td><td>114.3688692994823</td><td>2.0</td><td>推算中继 R12</td><td>124.3</td><td>是</td></tr><tr><td>推算中继 R14</td><td>22.35806889969991</td><td>114.36941872087027</td><td>2.0</td><td>推算中继 R13</td><td>60.1</td><td>是</td></tr><tr><td>推算中继 R15</td><td>22.358258331074826</td><td>114.37101632664735</td><td>2.0</td><td>推算中继 R14</td><td>165.6</td><td>是</td></tr><tr><td>万宜东坝辅网关</td><td>22.364084</td><td>114.3729303</td><td>5.0</td><td>推算中继 R15</td><td>677.0</td><td>是</td></tr></tbody></table></div></details>
+
 </section>
 
 <section id="william">
 <h2>William</h2>
-<p>William，17 岁，姓氏未公布。2026 年 11 月 6 日约 16 时在维多利亚州 Gippsland 的 Walhalla East 一带失踪，11 月 12 日由警方直升机在陡峭河床寻获并吊出。手机、食物和水留在营地。公开报道把搜索重点放在 Cowwarr Weir 西北约 6 km，寻获位置写在 Stoney Creek 以东约 2 km。营地、寻获点和搜索重点都没有可写入坐标文件的确认点。轨道名称在报道里不一致，ABC 图说写 W2 Track，7NEWS 写 T2 track，本规划不据此选点。报道见 <a href="https://www.abc.net.au/news/2026-11-11/major-search-for-missing-boy-william-enters-fifth-day/107371578">ABC（2026-11-11）</a>、<a href="https://www.abc.net.au/news/2026-11-12/missing-teenager-william-found-gippsland-bush/107372518">ABC（2026-11-12）</a>、<a href="https://7news.com.au/news/missing-person/missing-teen-camper-found-alive-after-six-days-lost--c-23152130">7NEWS（2026-11-12）</a>。</p>
-<p>860 m 重分配之后，网关留在 Cowwarr 镇区，天线离地 5 m，对应镇区指挥集结点一侧。堰保留为走廊节点，天线离地 5 m，图上与镇区同为蓝色方块，不是第二条必须的网关。镇区至堰直线 3.66 km，中间 4 个推算中继，5 跳，跳距 541.3–852.5 m，均几何通视且不超过 860 m。跳距之和 3.73 km。</p>
-<p>报道搜索重点在图上按堰西北约 6 km 的方位画成红圈，不是确认坐标，不是源。以其为中心的 1.5 km 红色虚线圆是地图参照，不是通视范围。红色斜线区不上色。Stoney Creek Road 的白点是路名参考，不是营地。营地、寻获点和搜索重点都不接入这条走廊。</p>
+<p>事件报道（ABC、7NEWS）：<a href="https://www.abc.net.au/news/2026-11-11/major-search-for-missing-boy-william-enters-fifth-day/107371578">ABC（2026-11-11）</a> · <a href="https://www.abc.net.au/news/2026-11-12/missing-teenager-william-found-gippsland-bush/107372518">ABC（2026-11-12）</a> · <a href="https://7news.com.au/news/missing-person/missing-teen-camper-found-alive-after-six-days-lost--c-23152130">7NEWS（2026-11-12）</a>。</p>
+<p><strong>计算与布点：</strong>Cowwarr 镇区设联网网关，沿镇区至 Cowwarr Weir 的 3.66 km 直线走廊加 4 个中继。5 段，每段 541.3–852.5 m，累计 3.73 km。</p>
+<p><strong>进场：</strong>Cowwarr 镇区集结，便携节点先到 Cowwarr Weir 一侧可达点接收。按新坐标选进场路径。公开报道的搜索重点约在堰西北 6 km，寻获点缺精确坐标，这张镇区—堰图只确定接收起点。</p>
 <p>频段按澳洲 915–928 MHz、<a href="https://www.legislation.gov.au/F2025L01047/asmade/2025-09-05/text/original/pdf">LIPD 类许可</a> 核对。挂件在人身上计位，不依赖留在营地的手机。</p>
 <figure>
-<figcaption>William。镇区网关、堰节点和 4 个推算中继。营地、寻获点与报道搜索重点未接入。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
+<figcaption>Cowwarr 镇区至堰。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
 <img src="maps/map-william-viewshed.png" width="1600" height="2761" alt="Cowwarr 至堰的卫星底图。蓝色方块为镇区网关和堰，橙色菱形为 4 个推算中继，黄色实线为规划跳。西北红色斜线区不上色。">
 </figure>
-<div class="table-wrap"><table class="coords"><caption>William 节点，取自 maps/relay_plan.json 的 william</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>Cowwarr 镇区网关</td><td>-38.0140074</td><td>146.6964831</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>-38.00979068081499</td><td>146.68838024139404</td><td>2.0</td><td>Cowwarr 镇区网关</td><td>850.8</td><td>是</td></tr><tr><td>推算中继 R2</td><td>-38.00938276908597</td><td>146.68222360981156</td><td>2.0</td><td>推算中继 R1</td><td>541.3</td><td>是</td></tr><tr><td>推算中继 R3</td><td>-38.00532717973853</td><td>146.67396621594833</td><td>2.0</td><td>推算中继 R2</td><td>852.5</td><td>是</td></tr><tr><td>推算中继 R4</td><td>-38.00172355511777</td><td>146.66720433259286</td><td>2.0</td><td>推算中继 R3</td><td>715.2</td><td>是</td></tr><tr><td>Cowwarr Weir 节点</td><td>-37.9999195</td><td>146.6587103</td><td>5.0</td><td>推算中继 R4</td><td>770.8</td><td>是</td></tr></tbody></table></div>
+<details><summary>查看节点坐标与跳距</summary><div class="table-wrap"><table class="coords"><caption>William 节点，取自 maps/relay_plan.json 的 william</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>Cowwarr 镇区网关</td><td>-38.0140074</td><td>146.6964831</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>-38.00979068081499</td><td>146.68838024139404</td><td>2.0</td><td>Cowwarr 镇区网关</td><td>850.8</td><td>是</td></tr><tr><td>推算中继 R2</td><td>-38.00938276908597</td><td>146.68222360981156</td><td>2.0</td><td>推算中继 R1</td><td>541.3</td><td>是</td></tr><tr><td>推算中继 R3</td><td>-38.00532717973853</td><td>146.67396621594833</td><td>2.0</td><td>推算中继 R2</td><td>852.5</td><td>是</td></tr><tr><td>推算中继 R4</td><td>-38.00172355511777</td><td>146.66720433259286</td><td>2.0</td><td>推算中继 R3</td><td>715.2</td><td>是</td></tr><tr><td>Cowwarr Weir 节点</td><td>-37.9999195</td><td>146.6587103</td><td>5.0</td><td>推算中继 R4</td><td>770.8</td><td>是</td></tr></tbody></table></div></details>
 </section>
 
 <section id="potoy">
 <h2>蒲台</h2>
-<p>2021 年 10 月 28 日上午，31 岁王苑华离开慈云山慈康邨后失联。他曾计划去钓鱼翁，也曾想去飞鹅山，两趟都取消。救援先在西贡钓鱼翁一带搜索。约 10 月 31 日 02:00，确认手机信号在 28 日 12:00 和 15:00 显示于蒲台岛，搜索才转到岛上，并有直升机。截至 11 月 1 日的公开报道没有寻获结果。报道见 <a href="https://orientaldaily.on.cc/content/%E8%A6%81%E8%81%9E%E6%B8%AF%E8%81%9E/odn-20211101-1101_00176_227/%E8%A1%8C%E5%B1%B1%E7%94%B7%E5%A4%B1%E8%B9%A44%E5%A4%A9--%E6%95%91%E6%8F%B4%E4%BA%BA%E5%93%A1%E6%90%9C%E8%92%B2%E5%8F%B0%E5%B3%B6">东方日报（2021-11-01）</a>。</p>
-<p>860 m 重分配之后，只保留岛上码头一处网关，天线离地 5 m，加 1 个推算中继，接到灯塔参考端点。不设钓鱼翁至码头的跨海链。图上钓鱼翁至蒲台码头的地图直线为 15.1 km，至岛上灯塔参考为 15.7 km。这段隔岛有挡，海峡不填色，不能靠加密中继连成逐跳链路。钓鱼翁的坐标不在坐标文件里，左幅不把它当作跨海源；周围 1.5 km 橙色虚线圆是地图参照，不是通视范围。慈康邨和香港仔的白点是参照，不是源。</p>
-<p>岛上码头至灯塔参考直线 0.87 km，中间 1 个推算中继，2 跳，跳距 431.3–591.8 m，均几何通视且不超过 860 m。跳距之和 1.02 km。灯塔是走廊端点，不是岛心，也不是网关，天线离地 2 m。</p>
+<p>事件报道：<a href="https://orientaldaily.on.cc/content/%E8%A6%81%E8%81%9E%E6%B8%AF%E8%81%9E/odn-20211101-1101_00176_227/%E8%A1%8C%E5%B1%B1%E7%94%B7%E5%A4%B1%E8%B9%A44%E5%A4%A9--%E6%95%91%E6%8F%B4%E4%BA%BA%E5%93%A1%E6%90%9C%E8%92%B2%E5%8F%B0%E5%B3%B6">东方日报（2021-11-01）</a>。</p>
+<p><strong>布点：</strong>岛上码头设网关，增加 1 个中继接灯塔方向。钓鱼翁至码头直线 15.1 km，中间有岛体遮挡，链路留在岛内。</p>
+<p><strong>计算与进场：</strong>码头至灯塔参考点直线 0.87 km，分 2 段，每段 431.3–591.8 m。由蒲台码头上岛，沿灯塔方向的步道收包，再按最新坐标转向目标一侧。</p>
 <p>频段按香港 920–925 MHz、<a href="https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1078.pdf">HKCA 1078</a> 核对。</p>
 <figure>
-<figcaption>蒲台。左幅跨海不连，右幅是岛上走廊：码头网关、1 个推算中继、灯塔参考端点。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
+<figcaption>蒲台岛内接收走廊。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
 <img src="maps/map-potoy-viewshed.png" width="2185" height="2694" alt="蒲台通视图。左幅钓鱼翁至蒲台码头的跨海直线以斜线标出、海峡不填色；右幅码头网关经一个推算中继接到灯塔。">
 </figure>
-<div class="table-wrap"><table class="coords"><caption>蒲台节点，取自 maps/relay_plan.json 的 potoy</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>蒲台码头网关</td><td>22.1633438</td><td>114.2530887</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>22.16216534596124</td><td>114.25707864623519</td><td>2.0</td><td>蒲台码头网关</td><td>431.3</td><td>是</td></tr><tr><td>岛上灯塔参考（路径端点，非岛心）</td><td>22.1568833</td><td>114.2577833</td><td>2.0</td><td>推算中继 R1</td><td>591.8</td><td>是</td></tr></tbody></table></div>
+<details><summary>查看节点坐标与跳距</summary><div class="table-wrap"><table class="coords"><caption>蒲台节点，取自 maps/relay_plan.json 的 potoy</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>蒲台码头网关</td><td>22.1633438</td><td>114.2530887</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>22.16216534596124</td><td>114.25707864623519</td><td>2.0</td><td>蒲台码头网关</td><td>431.3</td><td>是</td></tr><tr><td>岛上灯塔参考（路径端点，非岛心）</td><td>22.1568833</td><td>114.2577833</td><td>2.0</td><td>推算中继 R1</td><td>591.8</td><td>是</td></tr></tbody></table></div></details>
 </section>
 
 <section id="walami">
 <h2>瓦拉米</h2>
-<p>2026 年 4 月 11 日，6 人队伍走瓦拉米步道。一名 70 岁山友在约 11.4 公里处与队伍分开后失联，一带为滑坡落石区。4 月 19 日在 7.5 公里处山谷下寻获。公开报道未写全名。搜救中用过无人机看深谷。报道见 <a href="https://www.cna.com.tw/news/asoc/202604190166.aspx">中央社（2026-04-19）</a>。官方步道由山风口至瓦拉米山屋约 14 km（<a href="https://www.ysnp.gov.tw/Trail/e0befc9d-0707-4ce0-b530-6bde521570f9?ID=904fb530-436b-4ba8-95a9-d351ccbca493&Tab=3">玉山国家公园管理处</a>）。中央社写单程约 13.6 km，7K 之后须申请入园。</p>
-<p>860 m 重分配之后，道路端网关放在南安或山风。本链的起点网关是南安，天线离地 5 m。山风是走廊上的 5 m 具名节点，图上作登山口参照，精确登山口未解析。佳心是具名中继，天线离地 2 m。另有 18 个推算中继，沿 OSM 地名走廊排到山屋。山屋是步道端点，不是网关，天线离地 2 m。主网关不下谷底。</p>
-<p>南安至山风直线 4.07 km，中间 9 个推算中继，10 跳，跳距 55.1–846.5 m，均几何通视且不超过 860 m。山风至佳心直线 2.71 km，中间 4 个推算中继，5 跳，跳距 243.5–854.9 m，均几何通视且不超过 860 m。佳心至山屋直线 2.87 km，中间 5 个推算中继，6 跳，跳距 172.2–859.8 m，均几何通视且不超过 860 m。三段跳距之和 10.26 km。山风至山屋直线 5.37 km。官方步道 14 km，长于这条地名连线，现场中继可能更多。部分短跳用于绕开局部脊线转角。</p>
-<p>7.5K、11.4K 和谷底没有解析出坐标，图上不落点，不从谷底上色，不接入本走廊。不得沿地名直线或本走廊插值这两个里程点。图例写明谷底对照峡谷穿戴试验的 300 m。</p>
+<p>事件及步道来源：<a href="https://www.cna.com.tw/news/asoc/202604190166.aspx">中央社（2026-04-19）</a> · <a href="https://www.ysnp.gov.tw/Trail/e0befc9d-0707-4ce0-b530-6bde521570f9?ID=904fb530-436b-4ba8-95a9-d351ccbca493&Tab=3">玉山国家公园管理处</a>。</p>
+<p><strong>布点：</strong>南安设道路端网关，经山风、佳心向山屋布置 18 个推算中继；佳心另作为具名中继。</p>
+<p><strong>计算：</strong>南安 → 山风 10 段，山风 → 佳心 5 段，佳心 → 山屋 6 段。模型连线累计 10.26 km，实际步道约 14 km。分段核对至可用出口的转发额度。</p>
+<p><strong>进场：</strong>从山风登山口带便携节点沿主径进入。历史寻获区在约 7.5K 下方山谷，先由主径可通行处接收，再用报文坐标选谷侧接近路线。7.5K、11.4K 与谷底坐标待核。</p>
 <p>频段按台湾 920–925 MHz、<a href="https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg026132/ch06/type1/gov53/num22/images/Eg01.pdf">LP0002</a> 室外 0.5 W 核对。</p>
 <figure>
-<figcaption>瓦拉米。南安为道路端网关，山风为道路端节点，佳心为具名中继，另有 18 个推算中继，山屋为端点。7.5K 与 11.4K 未落点。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
+<figcaption>瓦拉米步道通视走廊。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
 <img src="maps/map-walami-viewshed.png" width="1600" height="2606" alt="瓦拉米步道卫星底图。南安与山风为蓝色方块，佳心与山屋为黄色三角，橙色菱形为 18 个推算中继，黄色实线为规划跳。谷底不填色。">
 </figure>
-<div class="table-wrap"><table class="coords"><caption>瓦拉米节点，取自 maps/relay_plan.json 的 walami</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>南安道路端网关</td><td>23.3011979</td><td>121.2584273</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>23.30357924165954</td><td>121.25307660786166</td><td>2.0</td><td>南安道路端网关</td><td>607.2</td><td>是</td></tr><tr><td>推算中继 R2</td><td>23.30392968900793</td><td>121.25269502311755</td><td>2.0</td><td>推算中继 R1</td><td>55.1</td><td>是</td></tr><tr><td>推算中继 R3</td><td>23.3094006192945</td><td>121.24693149669633</td><td>2.0</td><td>推算中继 R2</td><td>846.5</td><td>是</td></tr><tr><td>推算中继 R4</td><td>23.31518325776607</td><td>121.24160818325174</td><td>2.0</td><td>推算中继 R3</td><td>842.0</td><td>是</td></tr><tr><td>推算中继 R5</td><td>23.315693871706046</td><td>121.24090959448722</td><td>2.0</td><td>推算中继 R4</td><td>91.2</td><td>是</td></tr><tr><td>推算中继 R6</td><td>23.315989748532747</td><td>121.23982030142736</td><td>2.0</td><td>推算中继 R5</td><td>116.0</td><td>是</td></tr><tr><td>推算中继 R7</td><td>23.318154885952588</td><td>121.23765170269905</td><td>2.0</td><td>推算中继 R6</td><td>327.1</td><td>是</td></tr><tr><td>推算中继 R8</td><td>23.319300161735576</td><td>121.23621537999213</td><td>2.0</td><td>推算中继 R7</td><td>194.2</td><td>是</td></tr><tr><td>推算中继 R9</td><td>23.32415177204756</td><td>121.23484064093475</td><td>2.0</td><td>推算中继 R8</td><td>557.4</td><td>是</td></tr><tr><td>山风节点</td><td>23.3273643</td><td>121.230497</td><td>5.0</td><td>推算中继 R9</td><td>569.5</td><td>是</td></tr><tr><td>推算中继 R10</td><td>23.332190746157302</td><td>121.22397958382817</td><td>2.0</td><td>山风节点</td><td>854.9</td><td>是</td></tr><tr><td>推算中继 R11</td><td>23.333991560048965</td><td>121.22195445882824</td><td>2.0</td><td>推算中继 R10</td><td>287.8</td><td>是</td></tr><tr><td>推算中继 R12</td><td>23.335651538904326</td><td>121.22039961586518</td><td>2.0</td><td>推算中继 R11</td><td>243.5</td><td>是</td></tr><tr><td>推算中继 R13</td><td>23.341052253962026</td><td>121.21458583267042</td><td>2.0</td><td>推算中继 R12</td><td>844.4</td><td>是</td></tr><tr><td>佳心中继</td><td>23.345896</td><td>121.2132167</td><td>2.0</td><td>推算中继 R13</td><td>556.4</td><td>是</td></tr><tr><td>推算中继 R14</td><td>23.348047936958082</td><td>121.20533466339111</td><td>2.0</td><td>佳心中继</td><td>839.5</td><td>是</td></tr><tr><td>推算中继 R15</td><td>23.346053861562936</td><td>121.20443184499265</td><td>2.0</td><td>推算中继 R14</td><td>240.1</td><td>是</td></tr><tr><td>推算中继 R16</td><td>23.348047936958082</td><td>121.19786739349365</td><td>2.0</td><td>推算中继 R15</td><td>705.9</td><td>是</td></tr><tr><td>推算中继 R17</td><td>23.349562972411473</td><td>121.18960901859214</td><td>2.0</td><td>推算中继 R16</td><td>859.8</td><td>是</td></tr><tr><td>推算中继 R18</td><td>23.35220299877597</td><td>121.18629821930756</td><td>2.0</td><td>推算中继 R17</td><td>447.7</td><td>是</td></tr><tr><td>瓦拉米山屋（步道端点，非网关）</td><td>23.3537493</td><td>121.1863941</td><td>2.0</td><td>推算中继 R18</td><td>172.2</td><td>是</td></tr></tbody></table></div>
+<details><summary>查看节点坐标与跳距</summary><div class="table-wrap"><table class="coords"><caption>瓦拉米节点，取自 maps/relay_plan.json 的 walami</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>上一跳</th><th>跳距 m</th><th>通视且 ≤ 860 m</th></tr></thead><tbody><tr><td>南安道路端网关</td><td>23.3011979</td><td>121.2584273</td><td>5.0</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 R1</td><td>23.30357924165954</td><td>121.25307660786166</td><td>2.0</td><td>南安道路端网关</td><td>607.2</td><td>是</td></tr><tr><td>推算中继 R2</td><td>23.30392968900793</td><td>121.25269502311755</td><td>2.0</td><td>推算中继 R1</td><td>55.1</td><td>是</td></tr><tr><td>推算中继 R3</td><td>23.3094006192945</td><td>121.24693149669633</td><td>2.0</td><td>推算中继 R2</td><td>846.5</td><td>是</td></tr><tr><td>推算中继 R4</td><td>23.31518325776607</td><td>121.24160818325174</td><td>2.0</td><td>推算中继 R3</td><td>842.0</td><td>是</td></tr><tr><td>推算中继 R5</td><td>23.315693871706046</td><td>121.24090959448722</td><td>2.0</td><td>推算中继 R4</td><td>91.2</td><td>是</td></tr><tr><td>推算中继 R6</td><td>23.315989748532747</td><td>121.23982030142736</td><td>2.0</td><td>推算中继 R5</td><td>116.0</td><td>是</td></tr><tr><td>推算中继 R7</td><td>23.318154885952588</td><td>121.23765170269905</td><td>2.0</td><td>推算中继 R6</td><td>327.1</td><td>是</td></tr><tr><td>推算中继 R8</td><td>23.319300161735576</td><td>121.23621537999213</td><td>2.0</td><td>推算中继 R7</td><td>194.2</td><td>是</td></tr><tr><td>推算中继 R9</td><td>23.32415177204756</td><td>121.23484064093475</td><td>2.0</td><td>推算中继 R8</td><td>557.4</td><td>是</td></tr><tr><td>山风节点</td><td>23.3273643</td><td>121.230497</td><td>5.0</td><td>推算中继 R9</td><td>569.5</td><td>是</td></tr><tr><td>推算中继 R10</td><td>23.332190746157302</td><td>121.22397958382817</td><td>2.0</td><td>山风节点</td><td>854.9</td><td>是</td></tr><tr><td>推算中继 R11</td><td>23.333991560048965</td><td>121.22195445882824</td><td>2.0</td><td>推算中继 R10</td><td>287.8</td><td>是</td></tr><tr><td>推算中继 R12</td><td>23.335651538904326</td><td>121.22039961586518</td><td>2.0</td><td>推算中继 R11</td><td>243.5</td><td>是</td></tr><tr><td>推算中继 R13</td><td>23.341052253962026</td><td>121.21458583267042</td><td>2.0</td><td>推算中继 R12</td><td>844.4</td><td>是</td></tr><tr><td>佳心中继</td><td>23.345896</td><td>121.2132167</td><td>2.0</td><td>推算中继 R13</td><td>556.4</td><td>是</td></tr><tr><td>推算中继 R14</td><td>23.348047936958082</td><td>121.20533466339111</td><td>2.0</td><td>佳心中继</td><td>839.5</td><td>是</td></tr><tr><td>推算中继 R15</td><td>23.346053861562936</td><td>121.20443184499265</td><td>2.0</td><td>推算中继 R14</td><td>240.1</td><td>是</td></tr><tr><td>推算中继 R16</td><td>23.348047936958082</td><td>121.19786739349365</td><td>2.0</td><td>推算中继 R15</td><td>705.9</td><td>是</td></tr><tr><td>推算中继 R17</td><td>23.349562972411473</td><td>121.18960901859214</td><td>2.0</td><td>推算中继 R16</td><td>859.8</td><td>是</td></tr><tr><td>推算中继 R18</td><td>23.35220299877597</td><td>121.18629821930756</td><td>2.0</td><td>推算中继 R17</td><td>447.7</td><td>是</td></tr><tr><td>瓦拉米山屋（步道端点，非网关）</td><td>23.3537493</td><td>121.1863941</td><td>2.0</td><td>推算中继 R18</td><td>172.2</td><td>是</td></tr></tbody></table></div></details>
 </section>
 
 <section id="brides">
 <h2>新娘潭</h2>
-<p>没有官方「新娘潭地区」多边形。本段不依附某一则搜救报道，走廊按渔护署新娘潭自然教育径、至照镜潭的路径和步道口道路划定。邻近的官方郊野公园是船湾郊野公园和八仙岭郊野公园。走廊不含整条八仙岭自然教育径、乌蛟腾村街、大美督，也不含新娘潭路南段烧烤区。</p>
-<p>线状走廊：官方 GPX 900.1 m（教育径页面标注约 0.7 km），至照镜潭连接 232.9 m，步道口道路 636.5 m，步道口连接路径 128.7 m。这四段合计 1898.2 m，约 1.9 km。邻近停车场路径另 272.8 m。全部计入后走廊长 2171.0 m。走廊半宽 15.0 m，土地 50617.4 m²（5.0617 公顷）。1 个网关加 2 个中继，这块土地的通视覆盖为 100%，残余 0。</p>
-<p>非正式 150 m 土地缓冲把上述走廊、新娘潭、照镜潭、譅龙潭的水面边界，以及步道口与景点设施点向外扩 150 m，再去掉水面和 DEM ≤ 0.5 m 的像素。缓冲土地 430556.6 m²（43.0557 公顷，约 43 公顷）。同一网关加 7 个中继，覆盖 430247.0 m²，即 99.93%，残余 309.6 m²（约 310 m²），1 块、4 个 DEM 像素。残余质心 22.504905°N，114.235368°E，高程 81.3–87.1 m。浅蓝色线圈是这圈 150 m 缓冲，不是官方边界。黄线是渔护署官方 GPX。</p>
-<p>这些覆盖数字是本规则下的规划下界，不是实测通距。</p>
-<p>网关在狮子亭路边，22.503112°N，114.236768°E，天线离地 5 m，对应 <a href="https://www.openstreetmap.org/node/2171206021">OSM 节点 2171206021</a>。走廊档中继 A1 距网关 391.2 m，A2 距网关 121.8 m。缓冲档在此之外增加 B3 至 B7。</p>
+<p><strong>范围：</strong>以新娘潭自然教育径、照镜潭连接径及步道口道路为基础，计算沿径和向外 150 m 两档。</p>
+<p><strong>沿径档：</strong>含停车场连接共 2.171 km，取路径两侧各 15 m 陆地。1 网关、2 中继，模型覆盖 5.06 公顷，比例 100%。</p>
+<p><strong>缓冲档：</strong>扩大至 150 m 陆地缓冲。1 网关、7 中继，430,247.0 ÷ 430,556.6 m² = 99.93%，余约 310 m²。</p>
+<p><strong>进场：</strong>从新娘潭狮子亭路边进入自然教育径。在入口先收包，再按坐标走新娘潭或照镜潭支线。只有旧坐标时，以坐标和时间建立搜索起点。</p>
+<p>网关设在狮子亭路边（22.503112°N，114.236768°E）。A1、A2 距网关 391.2 m、121.8 m。<a href="https://www.openstreetmap.org/node/2171206021">入口地图</a>。</p>
 <p>径与地名来源：<a href="https://www.hiking.gov.hk/trail/info/id/T2lic3MxTlFSUnVjZUQ2dGxOb25iQT09">渔护署教育径</a>，<a href="https://www.hiking.gov.hk/console/public/uploads/others/file/gpx/BridesPoolNatureTrail.gpx">官方 GPX</a>，<a href="https://www.map.gov.hk/gm/map/s/trail/nat_5?lg=tc">地政总署地图</a>，<a href="https://www.geopark.gov.hk/tc/discover/attractions/brides-pool">地质公园新娘潭</a>。</p>
 <figure>
-<figcaption>新娘潭。浅蓝色线圈是 150 m 土地缓冲，不是官方边界。黄线是渔护署官方 GPX，橙线通向照镜潭，绿线是规划跳。走廊覆盖 100%；缓冲覆盖 99.93%，残余约 310 m²。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
+<figcaption>新娘潭沿径与缓冲覆盖。底图：Esri World Imagery（Esri, Maxar, Earthstar Geographics, and the GIS User Community）。</figcaption>
 <img src="maps/map-brides-pool-viewshed.png" width="1600" height="2642" alt="新娘潭卫星底图。浅蓝色线圈标出 150 m 土地缓冲，黄线为官方自然教育径，绿色实线连接网关与中继。网关在狮子亭路边。">
 </figure>
-<h3>走廊档</h3>
-<div class="table-wrap"><table class="coords"><caption>新娘潭走廊档，取自 coverage_result.json 的 A</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>地面高程 m</th><th>上一跳</th><th>跳距 m</th><th>本步新增覆盖 m²</th></tr></thead><tbody><tr><td>网关（狮子亭路边）</td><td>22.503112</td><td>114.236768</td><td>5.0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 A1</td><td>22.503759561748183</td><td>114.24051143643234</td><td>2.0</td><td>64.4</td><td>网关（狮子亭路边）</td><td>391.2</td><td>21284.1</td></tr><tr><td>推算中继 A2</td><td>22.5022056411579</td><td>114.2374334181844</td><td>2.0</td><td>77.1</td><td>网关（狮子亭路边）</td><td>121.8</td><td>387.0</td></tr></tbody></table></div>
-<h3>150 m 缓冲档</h3>
-<p>缓冲档含走廊档的网关、A1、A2，以及 B3–B7。品红菱形是 B3–B7。</p>
-<div class="table-wrap"><table class="coords"><caption>新娘潭 150 m 缓冲档，取自 coverage_result.json 的 B</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>地面高程 m</th><th>上一跳</th><th>跳距 m</th><th>本步新增覆盖 m²</th></tr></thead><tbody><tr><td>网关（狮子亭路边）</td><td>22.503112</td><td>114.236768</td><td>5.0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 A1</td><td>22.503759561748183</td><td>114.24051143643234</td><td>2.0</td><td>64.4</td><td>网关（狮子亭路边）</td><td>391.2</td><td>21284.1</td></tr><tr><td>推算中继 A2</td><td>22.5022056411579</td><td>114.2374334181844</td><td>2.0</td><td>77.1</td><td>网关（狮子亭路边）</td><td>121.8</td><td>387.0</td></tr><tr><td>推算中继 B3</td><td>22.503254557522755</td><td>114.24221245399292</td><td>2.0</td><td>127.2</td><td>网关（狮子亭路边）</td><td>559.5</td><td>60677.4</td></tr><tr><td>推算中继 B4</td><td>22.500341772713995</td><td>114.23945055360717</td><td>2.0</td><td>53.3</td><td>推算中继 A1</td><td>395.4</td><td>31656.5</td></tr><tr><td>推算中继 B5</td><td>22.504673690916285</td><td>114.23489015099358</td><td>2.0</td><td>104.0</td><td>推算中继 A2</td><td>378.9</td><td>25695.0</td></tr><tr><td>推算中继 B6</td><td>22.505576644970454</td><td>114.24105210880005</td><td>2.0</td><td>114.9</td><td>推算中继 B3</td><td>284.4</td><td>14782.2</td></tr><tr><td>推算中继 B7</td><td>22.50034554501351</td><td>114.2399173239726</td><td>2.0</td><td>29.5</td><td>推算中继 B4</td><td>48.0</td><td>1780.2</td></tr></tbody></table></div>
+
+<details><summary>查看节点坐标与跳距</summary><div class="table-wrap"><table class="coords"><caption>新娘潭走廊档，取自 coverage_result.json 的 A</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>地面高程 m</th><th>上一跳</th><th>跳距 m</th><th>本步新增覆盖 m²</th></tr></thead><tbody><tr><td>网关（狮子亭路边）</td><td>22.503112</td><td>114.236768</td><td>5.0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 A1</td><td>22.503759561748183</td><td>114.24051143643234</td><td>2.0</td><td>64.4</td><td>网关（狮子亭路边）</td><td>391.2</td><td>21284.1</td></tr><tr><td>推算中继 A2</td><td>22.5022056411579</td><td>114.2374334181844</td><td>2.0</td><td>77.1</td><td>网关（狮子亭路边）</td><td>121.8</td><td>387.0</td></tr></tbody></table></div></details>
+
+
+<details><summary>查看节点坐标与跳距</summary><div class="table-wrap"><table class="coords"><caption>新娘潭 150 m 缓冲档，取自 coverage_result.json 的 B</caption><thead><tr><th>节点</th><th>纬度</th><th>经度</th><th>离地 m</th><th>地面高程 m</th><th>上一跳</th><th>跳距 m</th><th>本步新增覆盖 m²</th></tr></thead><tbody><tr><td>网关（狮子亭路边）</td><td>22.503112</td><td>114.236768</td><td>5.0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>推算中继 A1</td><td>22.503759561748183</td><td>114.24051143643234</td><td>2.0</td><td>64.4</td><td>网关（狮子亭路边）</td><td>391.2</td><td>21284.1</td></tr><tr><td>推算中继 A2</td><td>22.5022056411579</td><td>114.2374334181844</td><td>2.0</td><td>77.1</td><td>网关（狮子亭路边）</td><td>121.8</td><td>387.0</td></tr><tr><td>推算中继 B3</td><td>22.503254557522755</td><td>114.24221245399292</td><td>2.0</td><td>127.2</td><td>网关（狮子亭路边）</td><td>559.5</td><td>60677.4</td></tr><tr><td>推算中继 B4</td><td>22.500341772713995</td><td>114.23945055360717</td><td>2.0</td><td>53.3</td><td>推算中继 A1</td><td>395.4</td><td>31656.5</td></tr><tr><td>推算中继 B5</td><td>22.504673690916285</td><td>114.23489015099358</td><td>2.0</td><td>104.0</td><td>推算中继 A2</td><td>378.9</td><td>25695.0</td></tr><tr><td>推算中继 B6</td><td>22.505576644970454</td><td>114.24105210880005</td><td>2.0</td><td>114.9</td><td>推算中继 B3</td><td>284.4</td><td>14782.2</td></tr><tr><td>推算中继 B7</td><td>22.50034554501351</td><td>114.2399173239726</td><td>2.0</td><td>29.5</td><td>推算中继 B4</td><td>48.0</td><td>1780.2</td></tr></tbody></table></div></details>
 </section>
 
-<section id="unresolved">
-<h2>坐标未解析、未接入</h2>
-<ul>
-<li>西贡花山峰位。灰色空心圈只是白腊–东坝中点。</li>
-<li>William 的营地、寻获点、报道搜索重点。图上的红圈是方位推算，不是确认坐标。</li>
-<li>钓鱼翁至蒲台码头的跨海段。15.1 km 地图直线不加密成跨海链路，海峡不填色。</li>
-<li>瓦拉米 7.5K、11.4K 与谷底。图上不落点，不从谷底上色。官方步道 14 km，长于本走廊的 10.26 km 地名连线，现场中继可能更多。</li>
-</ul>
+<section class="panel" id="sos">
+<h2>SOS 固件｜挂件定时发，搜救节点持续收</h2>
+<p><strong>挂件可以只上报、平时关接收。</strong>按键触发 SOS 时先发一次。优先带上最近坐标及其获取时间，没有坐标就先发 SOS 标志，取到新坐标后补发。发射前照常做信道活动检测（CAD），发完关闭 LoRa 接收，按定时器唤醒重发。关闭 LoRa 接收不影响独立 GNSS 获取位置。</p>
+<p><strong>代码流程：</strong>按键唤醒 → 保存 SOS 状态 → 读最近坐标 → 检测信道并发短包 → 关 LoRa 接收并休眠 → 定时醒来、按需刷新坐标并重发。报文带设备 ID、SOS 编号、包序号和定位时间。重发间隔加少量随机偏移，按送达率和功耗实测确定。</p>
+<p><strong>外部节点：</strong>固定中继保持正常收发，网关负责回传，搜救队便携节点沿步道持续监听。接收端按设备 ID、SOS 编号和包序号去重，展示最新坐标与时间。如果要让佩戴者知道指挥端已收到，可另测发完后短开接收窗口，由指挥端回执。</p>
+<p>Meshtastic 的 CLIENT_MUTE 只关闭替别人转发，仍可收发。样机需验证固件能否在两次 SOS 发射之间关接收并休眠。<a href="https://meshtastic.org/docs/configuration/radio/device/">设备角色</a> · <a href="https://meshtastic.org/docs/overview/mesh-algo/">转发与信道检测</a>。</p>
 </section>
 <footer>
-<p>坐标以 <a href="maps/relay_plan.json">maps/relay_plan.json</a> 和 <a href="maps/brides-pool/coverage_result.json">maps/brides-pool/coverage_result.json</a> 为准。同一正文见 <a href="mesh-sar-plan.md">mesh-sar-plan.md</a>。</p>
+<p>原始数据：<a href="maps/relay_plan.json">四案坐标与跳距</a> · <a href="maps/brides-pool/coverage_result.json">新娘潭覆盖计算</a>。</p>
 </footer>
 </main>
 </body>
