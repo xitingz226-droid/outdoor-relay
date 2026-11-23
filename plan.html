@@ -197,11 +197,13 @@ footer { margin-top:28px; color:var(--muted); font-size:15px; }
 </section>
 
 <section class="panel" id="sos">
-<h2>SOS 固件｜挂件定时发，搜救节点持续收</h2>
-<p><strong>挂件可以只上报、平时关接收。</strong>按键触发 SOS 时先发一次。优先带上最近坐标及其获取时间，没有坐标就先发 SOS 标志，取到新坐标后补发。发射前照常做信道活动检测（CAD），发完关闭 LoRa 接收，按定时器唤醒重发。关闭 LoRa 接收不影响独立 GNSS 获取位置。</p>
-<p><strong>代码流程：</strong>按键唤醒 → 保存 SOS 状态 → 读最近坐标 → 检测信道并发短包 → 关 LoRa 接收并休眠 → 定时醒来、按需刷新坐标并重发。报文带设备 ID、SOS 编号、包序号和定位时间。重发间隔加少量随机偏移，按送达率和功耗实测确定。</p>
-<p><strong>外部节点：</strong>固定中继保持正常收发，网关负责回传，搜救队便携节点沿步道持续监听。接收端按设备 ID、SOS 编号和包序号去重，展示最新坐标与时间。如果要让佩戴者知道指挥端已收到，可另测发完后短开接收窗口，由指挥端回执。</p>
-<p>Meshtastic 的 CLIENT_MUTE 只关闭替别人转发，仍可收发。样机需验证固件能否在两次 SOS 发射之间关接收并休眠。<a href="https://meshtastic.org/docs/configuration/radio/device/">设备角色</a> · <a href="https://meshtastic.org/docs/overview/mesh-algo/">转发与信道检测</a>。</p>
+<h2>SOS 固件｜静止定时发，移动提前发</h2>
+<p><strong>按下 SOS 立即发第一包。</strong>有坐标就附上坐标和定位时间。还没定位时先发求助，取得新坐标后安排补发。SOS 模式持续到佩戴者主动取消。</p>
+<p><strong>静止也继续发。</strong>定时器到点就唤醒挂件，发送一份求助短包。发完关闭 LoRa 接收并休眠，等待下一次定时或运动触发。</p>
+<p><strong>持续运动时提前发。</strong>低功耗 IMU 检测到持续运动后唤醒主控，尝试更新 GNSS 坐标。拿到新位置后，满足最小发包间隔就提前上报。单次抖动过滤掉，连续运动时按间隔合并发送。定位暂时失败时，定时求助照常发，旧坐标保留原定位时间。</p>
+<p><strong>程序逻辑：</strong>定时到期或运动触发 → 更新可用坐标 → 检查发包间隔和信道 → 发短包 → 更新下次发包时间 → 休眠。两种触发同时发生时合并成一包。首轮走测对比静止与移动的送达率、首包时延和整机耗电，再定时间间隔。</p>
+<p><strong>外部节点：</strong>固定中继、网关和搜救队设备保持正常收发。接收端按设备 ID、SOS 编号和包序号去重，展示最新坐标及定位时间。需要回执时，挂件可在发包后短暂开启接收窗口。</p>
+<p>发射前保留信道活动检测（CAD）。Meshtastic 的 CLIENT_MUTE 关闭替其他设备转发的功能，挂件的收发休眠需通过固件控制。<a href="https://meshtastic.org/docs/configuration/radio/device/">设备角色</a> · <a href="https://meshtastic.org/docs/overview/mesh-algo/">转发与信道检测</a>。</p>
 </section>
 <footer>
 <p>原始数据：<a href="maps/relay_plan.json">四案坐标与跳距</a> · <a href="maps/brides-pool/coverage_result.json">新娘潭覆盖计算</a>。</p>
